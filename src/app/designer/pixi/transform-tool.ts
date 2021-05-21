@@ -435,10 +435,7 @@ export class TransformTool extends PIXI.Container {
             .endFill();
 
         if (alpha === 0) {
-            console.log(this.boxBg)
-            console.log(this.boxBg.hitArea)
             this.boxBg.hitArea = new PIXI.Rectangle(-w / 2, -h / 2, w, h);
-            console.log(this.boxBg.hitArea)
         }
     }
 
@@ -718,9 +715,7 @@ export class TransformTool extends PIXI.Container {
     }
 
     private onDragStart = (e: PIXI.InteractionEvent) => {
-        console.log(this.blockBoxInteraction)
         if (this.blockBoxInteraction) {
-            console.log("here it's blocked")
             return;
         }
 
