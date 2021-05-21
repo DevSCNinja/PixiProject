@@ -1,0 +1,13 @@
+{
+    "id": 1,
+    "domain": "www.monuvision.com",
+    "primary_color": "#224f6e",
+    "secondary_color": "#efefe7",
+    "tertiary_color": "#7291a5",
+    "designer_name": "MonuVision",
+    "contact_email": "contact22222@monumentpro.com",
+    "default_recipient": "usa@monumentpro.us",
+    "url": "monuvision.com",
+    "logo": "monuvision-assets/images/insect.png",
+    "download_vectors": true
+}

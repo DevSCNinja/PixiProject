@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "scale": 1.0,
+        "line_scale": 1.0,
+        "sizes": "1,2,3,4,5,6.5,12",
+        "file": "monuvision-assets/fonts/Dosis-Bold.woff",
+        "sort": 20
+    },
+    {
+        "id": 2,
+        "scale": 1.0,
+        "line_scale": 1.0,
+        "sizes": "1.5,1.75,2.0,2.25,2.75, 2.5,3,3.5,4,4.5,5.0,5.5,6.5,14",
+        "file": "monuvision-assets/fonts/open-sans-v15-latin-regular.woff"
+    },
+    {
+        "id": 3,
+        "scale": 1.0,
+        "line_scale": 1.0,
+        "sizes": "2,3,4,5,10",
+        "file": "monuvision-assets/fonts/Classic-Roman.woff"
+    },
+    {
+        "id": 4,
+        "scale": 1.0,
+        "line_scale": 1.0,
+        "sizes": "2,3,4,4.875,5,5.5,10",
+        "file": "monuvision-assets/fonts/Playbox-FREE.woff"
+    },
+    {
+        "id": 1030,
+        "scale": 0.95,
+        "line_scale": 1.0,
+        "sizes": "2,3,4,5,5.5,10",
+        "file": "monuvision-assets/fonts/MLCCommonGothicSKS-Regular.woff"
+    },
+    {
+        "id": 1011,
+        "scale": 1.25,
+        "line_scale": 1.25,
+        "sizes": "2,3,4,4.875,5,5.5,10",
+        "file": "monuvision-assets/fonts/Brush-Script.woff",
+        "name": "Brush-Script Long Long Name"
+    },
+    {
+        "id": 5,
+        "scale": 1.2,
+        "line_scale": 1.0,
+        "sizes": "2.5,3,4,4.875,5,5.5,10",
+        "file": "monuvision-assets/fonts/SHADOW.woff",
+        "name": "Shadow 1",
+        "use_caps": true,
+        "sanded_center": true,
+        "sort": 9,
+        "dropdown_scale": 0.5
+    },
+    {
+        "id": 6,
+        "scale": 1.2,
+        "line_scale": 1.0,
+        "sizes": "2.5,3,4,4.875,5,5.5,10",
+        "file": "monuvision-assets/fonts/SHADOW.woff",
+        "name": "Shadow 2",
+        "use_caps": true,
+        "sanded_center": false,
+        "sort": 10
+    },
+    {
+        "id": 10111,
+        "scale": 1.25,
+        "line_scale": 1.25,
+        "sizes": "2,3,4,4.875,5,5.5,10",
+        "file": "monuvision-assets/fonts/Brush-Script.woff",
+        "name": "Brush-Script Repeat"
+    }
+]

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Monu</title>
+        <base href="/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            #app-wrapper {
+                margin: 0px auto;
+                border: 0;
+                padding: 0;
+                min-width: 1006px; /* 1024px - max possible scrollbar width (18px) */
+                min-height: 622px; /* 640px - max possible scrollbar width (18px) */
+                width: 100%;
+                height: 100vh; /* fallback value */
+                height: calc(
+                    var(--vh, 1vh) * 100
+                ); /* calculation needed for mobile browsers with dynamic address bar (--vh calculated in SpaceComponent) */
+            }
+            app-root,
+            app-designer {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+        <script>
+            /**
+             * Performance booster (optimizes NgZone's change detection).
+             * Basically we need to ignore events intensively produced by Pixi - such as 'pointermove', but also you
+             * can include 'pointerleave', 'pointerleave', 'touchmove', 'scroll', 'mousemove', 'mouseover', 'mouseout', 'mousewheel',
+             * 'mouseenter', 'mouseleave'. Just make sure your components work as expected. Sometimes it's needed to trigger the
+             * change detection manually.
+             * More info - https://github.com/pixijs/pixi.js/issues/4813
+             */
+            let props = [
+                'pointermove',
+                'pointerleave',
+                'pointerleave',
+                'touchmove',
+                'scroll',
+                'mousemove',
+                'mouseover',
+                'mouseout',
+                'mousewheel'
+            ];
+            const targets = [window, Document.prototype, HTMLBodyElement.prototype, HTMLElement.prototype];
+            window.__Zone_ignore_on_properties = [];
+            targets.forEach(function (target) {
+                window.__Zone_ignore_on_properties.push({
+                    target: target,
+                    ignoreProperties: props
+                });
+            });
+
+            window.__Zone_disable_requestAnimationFrame = true;
+            window.__Zone_disable_on_property = true; // Zone will not patch onProperty such as button.onclick (may be omitted)
+
+            window.__zone_symbol__BLACK_LISTED_EVENTS = props;
+        </script>
+    </head>
+    <body>
+        <div id="app-wrapper">
+            <app-root></app-root>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,402 @@
+<canvas
+    #spaceCanvas
+    tabindex="-1"
+    class="no-outline"
+    (contextmenu)="onCanvasContextMenu($event, contextMenuTrOptions)"
+    (pointerdown)="onCanvasPointerDown($event)"
+    [style.visibility]="ui.blockUIForGestures ? 'hidden' : 'visible'"
+></canvas>
+<div
+    *ngIf="ds?.typeofTransformable === 'art' || ds?.typeofTransformable === 'artLockedDimensions' || ds?.typeofTransformable === 'artPanel'"
+    style="position: absolute"
+>
+    <p-dialog
+        #artDialog
+        [visible]="true"
+        [closable]="false"
+        [minX]="-100000"
+        [minY]="-100000"
+        [positionLeft]="dialogLeft"
+        [positionTop]="dialogTop"
+        [style]="artContainerStyle"
+        [contentStyle]="artContentStyle"
+        [focusOnShow]="false"
+    >
+        <p-header>
+            {{ getArt().model.name }}
+            <a
+                class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all"
+                tabindex="0"
+                role="button"
+                (click)="artDialogMinimized = !artDialogMinimized"
+                ><span class="pi" [class.pi-minus]="!artDialogMinimized" [class.pi-plus]="artDialogMinimized"></span></a
+        ></p-header>
+
+        <div *ngIf="!artDialogMinimized" style="vertical-align: middle; text-align: center; margin: 5px 5px">
+            <div class="tool-item-tall" style="display: block">
+                <img style="pointer-events: none; max-width: 200px; max-height: 150px" [src]="getArtImage()" />
+            </div>
+            <div class="tool-item-tall">
+                <p-toggleButton
+                    onLabel="Invert"
+                    offLabel="Invert"
+                    onIcon="pi pi-check"
+                    offIcon="pi pi-plus"
+                    [ngModel]="getArtInvert()"
+                    (onChange)="onArtInvert($event.checked)"
+                ></p-toggleButton>
+            </div>
+            <div class="tool-item-tall">
+                <p-toggleButton
+                    onLabel="Frost"
+                    offLabel="Frost"
+                    onIcon="pi pi-check"
+                    offIcon="pi pi-plus"
+                    [ngModel]="getArtFrost()"
+                    [disabled]="getArtDrawSimple()"
+                    (onChange)="onArtFrost($event.checked)"
+                ></p-toggleButton>
+            </div>
+            <div class="tool-item-tall" style="margin: 5px">
+                <p-toggleButton
+                    onLabel="Keep Color"
+                    offLabel="Keep Color"
+                    onIcon="pi pi-check"
+                    offIcon="pi pi-plus"
+                    [ngModel]="getArtDrawSimple()"
+                    (onChange)="onArtDrawSimple($event.checked)"
+                ></p-toggleButton>
+            </div>
+        </div>
+    </p-dialog>
+</div>
+
+<div *ngIf="textService.selectedInput" style="position: absolute">
+    <p-dialog
+        #textDialog
+        [visible]="true"
+        [closable]="false"
+        [minX]="-100000"
+        [minY]="-100000"
+        [positionLeft]="dialogLeft"
+        [positionTop]="dialogTop"
+        [style]="textContainerStyle"
+        [contentStyle]="textContentStyle"
+        [focusOnShow]="false"
+    >
+        <p-header>
+            Text
+            <a
+                class="ui-dialog-titlebar-icon ui-dialog-titlebar-close ui-corner-all"
+                tabindex="0"
+                role="button"
+                (click)="textDialogMinimized = !textDialogMinimized"
+                ><span class="pi" [class.pi-minus]="!textDialogMinimized" [class.pi-plus]="textDialogMinimized"></span></a
+        ></p-header>
+
+        <div *ngIf="!textDialogMinimized" style="vertical-align: middle; text-align: center; margin: 5px 5px; overflow: hidden">
+            <div class="tool-item-tall">
+                <div class="tool-sub-item-first" style="min-width: 31px; text-align: right">Font</div>
+                <div class="tool-sub-item">
+                    <p-dropdown
+                        [options]="fonts"
+                        [ngModel]="getTextFont()"
+                        (onChange)="onTextFontChange($event.value)"
+                        [style.minWidth]="'140px'"
+                        scrollHeight="318px"
+                        placeholder="..."
+                        (onFocus)="onTextDropdownFocus()"
+                        (onShow)="onDropdownShow()"
+                        (onHide)="onDropdownHide()"
+                        styleClass="dropdown-medium"
+                        panelStyleClass="dropdown-panel-medium"
+                        [appendTo]="'body'"
+                    >
+                        <ng-template let-fnt pTemplate="item">
+                            <div class="ui-helper-clearfix" style="position: relative; min-height: 25px" [style.fontSize]="fnt.title">
+                                <div style="float: left" [style.fontFamily]="fnt.value">{{ fnt.label }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="tool-item-tall">
+                <div class="tool-sub-item-first" style="min-width: 31px; text-align: right">Size</div>
+                <div class="tool-sub-item">
+                    <p-dropdown
+                        [options]="getTextFontAvaiableSizes()"
+                        [ngModel]="getTextFontSize()"
+                        scrollHeight="275px"
+                        placeholder="..."
+                        (onChange)="onTextFontSizeChange($event.value)"
+                        (onFocus)="onTextDropdownFocus()"
+                        (onShow)="onDropdownShow()"
+                        (onHide)="onDropdownHide()"
+                        styleClass="dropdown-medium"
+                        panelStyleClass="dropdown-panel-medium"
+                        [appendTo]="'body'"
+                    >
+                        <ng-template let-fntsize pTemplate="item">
+                            <div class="ui-helper-clearfix" style="position: relative; min-height: 25px">
+                                <div style="float: left">{{ fntsize.label }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+            </div>
+            <div class="tool-item-tall">
+                <p-selectButton
+                    [options]="textAligns"
+                    [ngModel]="textService.selectedInput?.model.justify"
+                    (onChange)="onTextAlignChange($event.value)"
+                ></p-selectButton>
+            </div>
+            <div class="tool-item-tall">
+                <div class="tool-sub-item-first" style="min-width: 82px; text-align: right">Line Spacing</div>
+                <div class="tool-sub-item">
+                    <p-spinner
+                        [ngModel]="getTextLineSpacing()"
+                        (ngModelChange)="onTextLineSpacingChange($event)"
+                        [inputStyleClass]="'tool-spinner-input-locked'"
+                        [step]="0.25"
+                        [min]="0"
+                        [max]="5"
+                        tabIndex="-1"
+                    ></p-spinner>
+                </div>
+            </div>
+            <div class="tool-item-tall">
+                <div class="tool-sub-item-first" style="min-width: 82px; text-align: right">Kerning</div>
+                <div class="tool-sub-item">
+                    <p-spinner
+                        [(ngModel)]="textService.selectedInput?.model.spacing"
+                        (onChange)="onTextSpacingChange($event)"
+                        [inputStyleClass]="'tool-spinner-input-locked'"
+                        [step]="0.0625"
+                        [min]="-2"
+                        [max]="10"
+                        tabIndex="-1"
+                    ></p-spinner>
+                </div>
+            </div>
+            <div class="tool-item-tall">
+                <p-toggleButton
+                    onLabel="V Cut"
+                    offLabel="V Cut"
+                    onIcon="pi pi-check"
+                    offIcon="pi pi-plus"
+                    [ngModel]="textService.selectedInput?.model.vCut"
+                    (onChange)="onTextVCut($event.checked)"
+                ></p-toggleButton>
+            </div>
+            <div class="tool-item-tall">
+                <p-toggleButton
+                    onLabel="Frost"
+                    offLabel="Frost"
+                    onIcon="pi pi-check"
+                    offIcon="pi pi-plus"
+                    [ngModel]="textService.selectedInput?.model.frost"
+                    (onChange)="onTextFrost($event.checked)"
+                ></p-toggleButton>
+            </div>
+            <div class="tool-item-tall">
+                <p-toggleButton
+                    onLabel="Polish"
+                    offLabel="Polish"
+                    onIcon="pi pi-check"
+                    offIcon="pi pi-plus"
+                    [ngModel]="textService.selectedInput?.model.polish"
+                    (onChange)="onTextPolish($event.checked)"
+                ></p-toggleButton>
+            </div>
+            <div class="tool-item-tall">
+                <p-toggleButton
+                    onLabel="Outline"
+                    offLabel="Outline"
+                    onIcon="pi pi-check"
+                    offIcon="pi pi-plus"
+                    [ngModel]="textService.selectedInput?.model.outline"
+                    (onChange)="onTextOutline($event.checked)"
+                ></p-toggleButton>
+            </div>
+            <div class="tool-item-tall">
+                <div class="tool-sub-item-first">
+                    <p-toggleButton
+                        onLabel="Shape"
+                        offLabel="Shape"
+                        onIcon="pi pi-check"
+                        offIcon="pi pi-plus"
+                        [(ngModel)]="textService.selectedInput?.model.shapeEnabled"
+                        (onChange)="onTextShape($event.checked)"
+                    ></p-toggleButton>
+                </div>
+                <div class="tool-sub-item">
+                    <p-slider
+                        [(ngModel)]="textService.selectedInput?.model.shapeAdjust"
+                        (onChange)="onTextShapeAdjust($event.value)"
+                        (onSlideEnd)="onTextShapeAdjustSlideEnd()"
+                        [style]="{ width: '90px' }"
+                        [disabled]="!textService.selectedInput?.model.shapeEnabled"
+                        [step]="0.01"
+                        [min]="0"
+                        [max]="1"
+                    ></p-slider>
+                </div>
+            </div>
+        </div>
+    </p-dialog>
+</div>
+
+<div *ngIf="ui.displayZoomControls && ds.container" style="pointer-events: none; position: relative">
+    <div style="position: absolute; left: 15px" [style.top.px]="ds.autoZoom ? -52 : -169">
+        <div *ngIf="!ds.autoZoom">
+            <button
+                pButton
+                type="button"
+                icon="pi pi-search-plus"
+                style="pointer-events: auto; font-size: 1em"
+                class="b-margin ui-button-raised ui-button-secondary"
+                [disabled]="ds.container.scale.x >= ds.maxContainerScale"
+                (click)="ds.zoomIn()"
+                (touchend)="ds.zoomIn(true); ds.removeDelayedLoop()"
+                (mousedown)="ds.onZoomIn($event)"
+                (touchstart)="ds.onZoomIn($event)"
+                (mouseup)="ds.removeDelayedLoop()"
+                (mouseleave)="ds.removeDelayedLoop()"
+                (mouseout)="ds.removeDelayedLoop()"
+                (touchcancel)="ds.removeDelayedLoop()"
+                (touchleave)="ds.removeDelayedLoop()"
+                (touchmove)="ds.onTouchMove($event)"
+            ></button>
+        </div>
+        <div *ngIf="!ds.autoZoom">
+            <button
+                pButton
+                type="button"
+                icon="pi pi-search-minus"
+                style="pointer-events: auto; font-size: 1em"
+                class="b-margin ui-button-raised ui-button-secondary"
+                [disabled]="ds.container.scale.x <= ds.minContainerScale"
+                (click)="ds.zoomOut()"
+                (touchend)="ds.zoomOut(true); ds.removeDelayedLoop()"
+                (mousedown)="ds.onZoomOut($event)"
+                (touchstart)="ds.onZoomOut($event)"
+                (mouseup)="ds.removeDelayedLoop()"
+                (mouseleave)="ds.removeDelayedLoop()"
+                (mouseout)="ds.removeDelayedLoop()"
+                (touchcancel)="ds.removeDelayedLoop()"
+                (touchleave)="ds.removeDelayedLoop()"
+                (touchmove)="ds.onTouchMove($event)"
+            ></button>
+        </div>
+        <div style="pointer-events: auto; margin-left: -4px; margin-top: -4px">
+            <p-toggleButton
+                onLabel="Smart Zoom & Selection"
+                offLabel="Smart Zoom & Selection"
+                onIcon="pi pi-search"
+                offIcon="pi pi-search"
+                (onChange)="ds.onAutoZoomChange($event.checked)"
+                [(ngModel)]="ds.autoZoom"
+                styleClass="h-tool-btn"
+            ></p-toggleButton>
+        </div>
+    </div>
+</div>
+
+<library
+    [(visible)]="ui.displayArtLibrary"
+    [compactLayout]="true"
+    [minX]="-100000"
+    [minY]="-100000"
+    [positionLeft]="dialog2Left"
+    [positionTop]="dialog2Top"
+    [nodeService]="artService"
+    [types]="['component', 'panel']"
+    [apiPagination]="true"
+    [header]="'Add Art/Panels'"
+    [containerStyle]="libraryContainerStyle"
+    [contentStyle]="libraryContentStyle"
+    (onSelect)="onArtDataLoadComplete($event)"
+></library>
+
+<library
+    [(visible)]="ui.displayVaseLibrary"
+    [compactLayout]="true"
+    [minX]="-100000"
+    [minY]="-100000"
+    [positionLeft]="dialog2Left"
+    [positionTop]="dialog2Top"
+    [nodeService]="artService"
+    [types]="['vase']"
+    [header]="'Add Vase'"
+    [containerStyle]="libraryContainerStyle"
+    [contentStyle]="libraryContentStyle"
+    (onSelect)="onVaseDataLoadComplete($event)"
+    [searchVisible]="false"
+></library>
+
+<library
+    [(visible)]="ui.displayShapeLibrary"
+    [compactLayout]="true"
+    [minX]="-100000"
+    [minY]="-100000"
+    [positionLeft]="dialog2Left"
+    [positionTop]="dialog2Top"
+    [nodeService]="shapeService"
+    [types]="['marker', 'traditional', 'custom']"
+    [apiPagination]="true"
+    [header]="'Add / Replace Shape'"
+    [containerStyle]="libraryContainerStyle"
+    [contentStyle]="libraryContentStyle"
+    (onSelect)="onShapeDataLoadComplete($event)"
+    [searchVisible]="shapeSearchVisible"
+    [uploadVisible]="false"
+    [(selectedNode)]="shapeSelectedNode"
+></library>
+
+<div #editTextPopup [ngStyle]="editTextPopupStyle" style="position: absolute; z-index: 900">
+    <p-button
+        #editTextButton
+        *ngIf="!textService.editableInput"
+        icon="pi pi-pencil"
+        label="Edit"
+        (onClick)="textService.startTextEditing($event)"
+    ></p-button>
+    <p-button
+        #editTextButtonDone
+        *ngIf="!!textService.editableInput"
+        icon="pi pi-check"
+        label="Done"
+        (onClick)="textService.stopTextEditingAndSelectInput($event)"
+    ></p-button>
+</div>
+
+<div #transformOptionsPopup [ngStyle]="transformOptionsPopupStyle" style="position: absolute; z-index: 900">
+    <ng-container
+        *ngIf="
+            ds.typeofTransformable.substr(0, 3) === 'art' || ds.typeofTransformable === 'shape';
+            then menuTrOptionsGeneral;
+            else menuTrOptionsGroup
+        "
+    >
+    </ng-container>
+</div>
+<ng-template #menuTrOptionsGeneral>
+    <p-menu [model]="transformOptionsGeneral"></p-menu>
+</ng-template>
+<ng-template #menuTrOptionsGroup>
+    <p-menu [model]="transformOptionsGroup"></p-menu>
+</ng-template>
+
+<p-toast position="bottom-right"></p-toast>
+
+<p-confirmDialog [style]="{ width: '500px' }"></p-confirmDialog>
+
+<p-contextMenu
+    #contextMenuTrOptions
+    [model]="
+        ds.typeofTransformable.substr(0, 3) === 'art' || ds.typeofTransformable === 'shape'
+            ? transformOptionsGeneral
+            : transformOptionsGroup
+    "
+></p-contextMenu>

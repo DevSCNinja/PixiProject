@@ -1,0 +1,592 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'monuvision-assets/fonts/fontello/css/fontello.css';
+
+@media (min-width: 1440px) {
+    .header-logo {
+        max-width: 200px;
+    }
+    .header-link {
+        font-size: 14px;
+    }
+}
+@media (max-width: 1440px) {
+    .header-logo {
+        max-width: 150px;
+    }
+    .header-link {
+        font-size: 14px;
+    }
+}
+@media (max-width: 1300px) {
+    .header-logo {
+        max-width: 100px;
+    }
+    .header-link {
+        font-size: 13px;
+    }
+}
+
+body {
+    background-color: #cccccc;
+    /*overflow: hidden;*/ /* to avoid a flickering scrollbar when an overlay panel appears */
+}
+
+#app-wrapper {
+    color: #666666;
+    font-size: 17.5px; // 1em
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.preloader-text {
+    color: #eeeeee;
+    font-size: 17.5px; // 1em
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.fo {
+    font-family: 'fontello';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* adding no-outline removes the default blue outline */
+*.no-outline:focus,
+*.no-outline .ui-button:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* fix an arrow of Overlay Panel */
+.ui-overlaypanel {
+    &::after {
+        /*margin-left: -8px !important;
+        left: 1.25em !important;*/
+        display: none;
+    }
+
+    &::before {
+        /*margin-left: -10px !important;
+        left: 1.25em !important;*/
+        display: none;
+    }
+}
+
+.main-grid-bg {
+    background-color: var(--secondary-color, #efefe7);
+}
+
+.v-tool-btn .pi {
+    margin-top: 3px;
+    font-size: 2em;
+    padding: 0 0 0 0 !important;
+}
+.v-tool-btn .fo {
+    margin-top: 8px;
+    font-size: 1.4em;
+    padding: 0 0 6px 0 !important;
+}
+.v-tool-btn .ui-button-text {
+    margin-top: -4px;
+    padding: 0 0 3px 0 !important;
+}
+.v-tool-btn {
+    margin: 8px 16px 8px 16px !important;
+    width: 77px !important;
+    font-size: 13px !important;
+}
+
+.h-tool-btn {
+    margin: 4px 4px 4px 4px !important;
+    font-size: 13px !important;
+}
+
+.r-tool-btn {
+    pointer-events: auto;
+    margin: 4px 4px 4px 4px !important;
+    font-size: 18px !important;
+    -moz-border-radius: 22px !important;
+    -webkit-border-radius: 22px !important;
+    border-radius: 22px !important;
+}
+
+.r-tool-btn .ui-button-text {
+    padding: 7px 0px 7px 0px !important;
+}
+
+.tool-btn {
+    margin: 5px !important;
+}
+
+.x-sm-pad .ui-button-text {
+    padding: 3px 2px 3px 2px !important;
+}
+
+body .ui-button.transparent-btn.ui-state-default {
+    color: #666666;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+}
+
+body .ui-button.completely-transparent-btn {
+    color: #666666;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+}
+
+.library-dataview {
+    min-height: 355px;
+    height: 355px;
+}
+
+.library-dataview .ui-dataview-content {
+    min-height: 321px;
+    border-width: 0px !important;
+}
+
+.library-dataview .ui-dataview-header {
+    display: none;
+}
+
+.library-dataview .ui-dataview-emptymessage {
+    display: flex;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    color: #aaaaaa;
+}
+
+.library-dataview .ui-paginator-bottom {
+    border-top: 1px solid #dadada !important;
+}
+
+.library-dataview-compact {
+    min-height: 265px;
+    height: 265px;
+}
+
+.library-dataview-compact .ui-dataview-content {
+    min-height: 231px;
+    border-width: 0px !important;
+    padding: 0px 14px 10px 14px !important;
+}
+
+.library-dataview-compact .ui-dataview-header {
+    display: none;
+}
+
+.library-dataview-compact .ui-dataview-emptymessage {
+    display: flex;
+    height: 210px;
+    justify-content: center;
+    align-items: center;
+    color: #aaaaaa;
+}
+
+.library-dataview-compact .ui-paginator-bottom {
+    border: 0px solid #dadada !important;
+}
+
+.library-carousel-empty .ui-carousel-prev,
+.library-carousel-empty .ui-carousel-next,
+.library-carousel-empty .ui-carousel-dots-container {
+    display: none;
+}
+
+.ui-tooltip {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ui-tooltip-text {
+    word-break: break-word;
+}
+
+body .ui-button.ui-state-default.ui-button-secondary.transparent-bg:not(:hover),
+body .ui-buttonset.ui-button-secondary.transparent-bg > .ui-button.ui-state-default:not(:hover) {
+    color: var(--quinary-color, #99999a);
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: 1px solid rgba(0, 0, 0, 0) !important;
+}
+
+/* toast styles */
+body .ui-toast .ui-toast-message.ui-toast-message-info {
+    background-color: #bcd4db;
+    border: 1px solid #bcd4db;
+    color: #212121;
+}
+
+body .ui-toast .ui-toast-message.ui-toast-message-success {
+    background-color: #a3e2c6;
+    border: 1px solid #a3e2c6;
+    color: #212121;
+}
+
+body .ui-toast .ui-toast-message.ui-toast-message-warn {
+    background-color: #f3e6b5;
+    border: 1px solid #f3e6b5;
+    color: #212121;
+}
+
+body .ui-toast .ui-toast-message.ui-toast-message-error {
+    background-color: #ec849e;
+    border: 1px solid #ec849e;
+    color: #212121;
+}
+
+.tool-container {
+    display: table;
+    width: 100%;
+    font-size: 14px;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 8px 0px 0px 0px;
+    vertical-align: middle;
+    user-select: none;
+}
+
+.tool-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 5px 0px 5px;
+}
+
+.tool-item-tall {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px 5px 5px 5px;
+}
+
+.tool-sub-item-first {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.tool-sub-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.tool-delimiter {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0px 10px 8px 10px;
+    height: 30px;
+    border-left: 1px solid #d1d1d1;
+}
+
+.tool-spinner-input {
+    width: 90px;
+}
+
+.tool-spinner-input-locked {
+    width: 90px;
+    pointer-events: none;
+    caret-color: rgba(0, 0, 0, 0);
+}
+
+.tool-spinner-input-small {
+    width: 70px;
+}
+
+.v-delimiter {
+    display: inline-block;
+    vertical-align: middle;
+    border-left: 1px solid var(--senary-color, #e1e1e1);
+}
+
+.v-delimiter-thick {
+    display: inline-block;
+    vertical-align: middle;
+    border-left: 1px solid var(--senary-color, #e1e1e1);
+    border-right: 1px solid var(--senary-color, #e1e1e1);
+}
+
+.h-delimiter {
+    vertical-align: middle;
+    border-top: 1px solid var(--senary-color, #e1e1e1);
+}
+
+.h-delimiter-thick {
+    vertical-align: middle;
+    border-top: 1px solid var(--senary-color, #e1e1e1);
+    border-bottom: 1px solid var(--senary-color, #e1e1e1);
+}
+
+.compact-button {
+    max-height: 33px;
+}
+.box-highlight:hover {
+    background-color: #eeeeed;
+}
+
+div.ui-fileupload-content.ui-widget-content:not(.ui-fileupload-highlight) {
+    border-color: #c8c8c8;
+}
+
+div.ui-fileupload-content.ui-widget-content.ui-fileupload-highlight {
+    border-color: var(--primary-color, #848485);
+}
+
+.h-centered {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.ico-sm {
+    font-size: 1em !important;
+}
+
+.ico-md {
+    font-size: 2em !important;
+}
+
+.ico-lg {
+    font-size: 3em !important;
+}
+
+.t-margin {
+    margin-top: 1em !important;
+}
+
+.b-margin {
+    margin-bottom: 1em !important;
+}
+
+.l-margin {
+    margin-left: 1em !important;
+}
+
+.r-margin {
+    margin-right: 1em !important;
+}
+
+.t-margin-md {
+    margin-top: 0.5em !important;
+}
+
+.b-margin-md {
+    margin-bottom: 0.5em !important;
+}
+
+.l-margin-md {
+    margin-left: 0.5em !important;
+}
+
+.r-margin-md {
+    margin-right: 0.5em !important;
+}
+
+.t-margin-sm {
+    margin-top: 0.25em !important;
+}
+
+.b-margin-sm {
+    margin-bottom: 0.25em !important;
+}
+
+.l-margin-sm {
+    margin-left: 0.25em !important;
+}
+
+.r-margin-sm {
+    margin-right: 0.25em !important;
+}
+
+div.ui-treenode-content:focus {
+    outline-color: #fff;
+}
+
+div.ui-treenode-content:hover {
+    background-color: #eeeeed;
+}
+
+body
+    .ui-tree
+    .ui-tree-container
+    .ui-treenode
+    .ui-treenode-content.ui-treenode-selectable
+    .ui-treenode-label:not(.ui-state-highlight):hover {
+    background-color: #eeeeed;
+}
+
+body .ui-tree .ui-tree-container .ui-treenode .ui-treenode-content.ui-treenode-dragover {
+    background-color: #eeeeed;
+}
+
+// fix a bug when p copies excess style props from the parent div
+.ql-editor > p {
+    letter-spacing: inherit !important;
+    text-align: inherit !important;
+}
+
+// use these classes if primeng default min width is too large
+.dropdown-small {
+    min-width: 93px;
+}
+
+.dropdown-medium {
+    min-width: 140px;
+    max-width: 140px;
+}
+
+.dropdown-panel-medium {
+    min-width: 141px !important;
+}
+
+.slot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33px;
+    height: 33px;
+    background-color: #fff;
+    border: 1px solid;
+}
+
+.slot:hover {
+    background-color: #ddd;
+}
+
+.slot-arrow {
+    display: inline-block;
+    margin: 0px -5px 0px 5px;
+}
+
+.figure {
+    display: table;
+    text-align: center;
+    margin: 5px 0 0 0;
+    min-width: 80px; /* should match corresponding value in .figcaption */
+}
+
+.figure img {
+    display: inline-block;
+    max-width: 225px;
+    max-height: 150px;
+    /* set min values to partially resolve 'flickering scrollbar' bug */
+    min-width: 90px;
+    min-height: 90px;
+}
+
+.figcaption {
+    display: table-caption;
+    caption-side: bottom;
+    min-width: 80px;
+}
+
+.help-dialog {
+    z-index: 9999 !important;
+}
+
+.library-dialog {
+    z-index: 9999 !important;
+}
+
+body .ui-overlaypanel {
+    z-index: 10000 !important;
+}
+
+body .ui-confirmdialog {
+    z-index: 10001 !important;
+}
+
+library .ui-dialog-footer {
+    border-top-width: 0 !important;
+    padding: 0 20px 0 20px !important;
+}
+
+library .ui-breadcrumb {
+    border-width: 0 !important;
+}
+
+library .ui-overlaypanel-content {
+    padding: 10px !important;
+}
+
+body .compact-tree {
+    width: 100%;
+    overflow: auto;
+    padding: 0 !important;
+    border-width: 0px !important;
+}
+
+body .compact-tree .ui-tree-container {
+    padding: 0 !important;
+}
+
+body .ui-breadcrumb .ui-menuitem-text {
+    font-size: 13px !important;
+}
+
+body .ui-scrollpanel-content {
+    padding: 0px !important;
+}
+
+.shape-line {
+    background-color: var(--senary-color, #e1e1e1);
+}
+
+/* make scrollbar visible without hovering (needed for macOS) and customise it */
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+    width: 7px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #8e8e8e;
+}
+
+/* make scrollpanel's scrollbar similar to the general one */
+.ui-scrollpanel-bar {
+    background-color: #8e8e8e;
+    opacity: 1;
+    border-radius: 4px;
+}
+
+.ui-scrollpanel-bar-y {
+    width: 7px;
+}
+
+.ui-scrollpanel-bar-x {
+    height: 7px;
+}
+
+.noselect {
+    /*-webkit-touch-callout: none;*/ /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+.text-select {
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
+.faded-text {
+    color: var(--senary-color, #e1e1e1);
+}

@@ -1,0 +1,176 @@
+<data>
+    <design>
+        <isFront>true</isFront>
+        <oppositeSideID>-1</oppositeSideID><area>
+        <piece type="GROUP">
+            <x>420.05</x>
+            <y>370.95</y>
+            <sX>0</sX>
+            <sY>0</sY>
+            <r>0</r>
+            <ID>28457905</ID>
+            <piece type="PRINTED TEXT">
+                <string>ABLES</string>
+                <font>0,1015</font>
+                <size>0,2.5</size>
+                <lineSpacing>0.5</lineSpacing>
+                <spacing>0.4375</spacing>
+                <bold>false</bold>
+                <polish>false</polish>
+                <frost>false</frost>
+                <outline>false</outline>
+                <justify>1</justify>
+                <shapeEnabled>false</shapeEnabled>
+                <shapeAdjust>0.75</shapeAdjust>
+                <sinkage>white</sinkage>
+                <x>-1.3000000000000114</x>
+                <y>208.6</y>
+                <sX>1</sX>
+                <sY>1</sY>
+                <r>0</r>
+                <ID>20030687</ID>
+            </piece>
+            <piece type="PRINTED TEXT">
+                <string>HELLA RUPPERT~^#JULY 3, 1931~^#SPACE~^#</string>
+                <font>0,1015</font>
+                <size>0,1.375|13,0.875|14,1.25|32,0.875</size>
+                <lineSpacing>0.75,0.75,1,1</lineSpacing>
+                <spacing>0.0625</spacing>
+                <bold>false</bold>
+                <polish>false</polish>
+                <frost>false</frost>
+                <outline>false</outline>
+                <justify>1</justify>
+                <shapeEnabled>false</shapeEnabled>
+                <shapeAdjust>0.75</shapeAdjust>
+                <sinkage>white</sinkage>
+                <x>1.25</x>
+                <y>287.85</y>
+                <sX>1</sX>
+                <sY>1</sY>
+                <r>0</r>
+                <ID>81292254</ID>
+            </piece>
+            <piece type="PRINTED TEXT">
+                <string>KATHRYN ANN~^#OCT. 18, 1962~^#SPACE</string>
+                <font>0,1015</font>
+                <size>0,1.375|11,0.875|12,1.25</size>
+                <lineSpacing>0.75,0.75,1</lineSpacing>
+                <spacing>0.0625</spacing>
+                <bold>false</bold>
+                <polish>false</polish>
+                <frost>false</frost>
+                <outline>false</outline>
+                <justify>1</justify>
+                <shapeEnabled>false</shapeEnabled>
+                <shapeAdjust>0.75</shapeAdjust>
+                <sinkage>white</sinkage>
+                <x>435.5</x>
+                <y>290.35</y>
+                <sX>1</sX>
+                <sY>1</sY>
+                <r>0</r>
+                <ID>56081423</ID>
+            </piece>
+            <piece type="PRINTED TEXT">
+                <string>ABLES</string>
+                <font>0,1015</font>
+                <size>0,2.5</size>
+                <lineSpacing>0.5</lineSpacing>
+                <spacing>0.4375</spacing>
+                <bold>false</bold>
+                <polish>false</polish>
+                <frost>false</frost>
+                <outline>false</outline>
+                <justify>1</justify>
+                <shapeEnabled>false</shapeEnabled>
+                <shapeAdjust>0.75</shapeAdjust>
+                <sinkage>white</sinkage>
+                <x>425</x>
+                <y>208.45</y>
+                <sX>1</sX>
+                <sY>1</sY>
+                <r>0</r>
+                <ID>53519004</ID>
+            </piece>
+            <piece type="COMPONENT">
+                <compID>3161</compID>
+                <name>DM CROSSRO5</name>
+                <imageFile>/sites/default/files/component/129/CROSSRO5_4.09x7.68.gif</imageFile>
+                <inverted>false</inverted>
+                <drawSimple>false</drawSimple>
+                <etching>not an etching</etching>
+                <frostingVisible>true</frostingVisible>
+                <sinkage>gray</sinkage>
+                <flipped>false</flipped>
+                <minWidth>3.8854999999999995</minWidth>
+                <minHeight>7.295999999999999</minHeight>
+                <x>0.9000000000000057</x>
+                <y>100.39999999999998</y>
+                <sX>0.24898305084745764</sX>
+                <sY>0.24994052313779236</sY>
+                <r>0</r>
+                <ID>92538858</ID>
+            </piece>
+            <piece type="COMPONENT">
+                <compID>3688</compID>
+                <name>MV Dove 018v</name>
+                <imageFile>/sites/default/files/component/10/mv_dove_018v_9x6.5.gif</imageFile>
+                <inverted>false</inverted>
+                <drawSimple>false</drawSimple>
+                <etching>not an etching</etching>
+                <frostingVisible>true</frostingVisible>
+                <sinkage>gray</sinkage>
+                <flipped>true</flipped>
+                <minWidth>8.549999999999997</minWidth>
+                <minHeight>6.175</minHeight>
+                <x>426.85</x>
+                <y>106.34999999999997</y>
+                <sX>0.27695716395864106</sX>
+                <sY>0.2769556121520829</sY>
+                <r>0</r>
+                <ID>58152318</ID>
+            </piece>
+        </piece></area>
+    </design>
+    <monument>
+        <tablet n="0">
+            <shape>1</shape>
+            <width>330</width>
+            <height>360</height>
+            <depth>120</depth>
+            <polish>5</polish>
+            <color>372</color>
+            <hidden>false</hidden>
+            <posX>-210</posX>
+        </tablet>
+        <tablet n="1">
+            <shape>1</shape>
+            <width>330</width>
+            <height>360</height>
+            <depth>120</depth>
+            <polish>5</polish>
+            <color>372</color>
+            <hidden>false</hidden>
+            <posX>210</posX>
+        </tablet>
+        <base n="0">
+        <shape>101</shape>
+        <width>900</width>
+        <height>90</height>
+        <depth>180</depth>
+        <polish>6</polish>
+        <color>372</color>
+        <hidden>false</hidden>
+        <posX>0</posX>
+        </base>
+    </monument>
+    <instructions />
+    <background>
+        <id>482779</id>
+        <monX>440</monX>
+        <monY>484</monY>
+        <pixPerFoot>131.64999999999998</pixPerFoot>
+        <imagePath>sites/default/files/silver_gray.jpg</imagePath>
+    </background>
+</data>

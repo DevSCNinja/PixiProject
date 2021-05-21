@@ -1,0 +1,26 @@
+[
+    {
+        "price": {
+            "wholesale": "4,028.00",
+            "retail": "11,416.00"
+        },
+        "line1": "adsf",
+        "line2": "zcvxc"
+    },
+    {
+        "price": {
+            "wholesale": "6,078.00",
+            "retail": "12,446.40"
+        },
+        "line1": "adsf222",
+        "line2": "zcvxc222"
+    },
+    {
+        "price": {
+            "wholesale": "7,078.00",
+            "retail": "13,446.40"
+        },
+        "line1": "adsf333",
+        "line2": "zcvxc333"
+    }
+]

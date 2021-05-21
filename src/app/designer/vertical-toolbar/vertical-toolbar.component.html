@@ -1,0 +1,55 @@
+<div *ngIf="this.ds" style="display: flex; flex-direction: column; height: 100%; text-align: center; align-items: center">
+    <div style="flex: 0 1 auto">
+        <button pButton type="button" label="Art/Panels" (click)="onArtAdd()" class="v-tool-btn">
+            <div class="pi pi-images"></div>
+        </button>
+        <button pButton type="button" label="Vases" (click)="onVaseAdd()" class="v-tool-btn">
+            <div class="fo icon-vase"></div>
+        </button>
+        <button pButton type="button" label="Text" (click)="onTextAdd()" class="v-tool-btn">
+            <div class="fo icon-text"></div>
+        </button>
+        <button pButton type="button" label="Shapes" (click)="onShapeAdd()" class="v-tool-btn">
+            <div class="fo icon-shape"></div>
+        </button>
+    </div>
+    <div class="h-delimiter-thick" style="flex: 0 1 2px; width: 80%; margin: 8px 0px 8px 0px"></div>
+
+    <div style="flex: 1 1 200px; margin: 8px 0px 0px 0px; overflow: hidden">
+        <p-scrollPanel #scrollPanelSwatch [style]="{ height: '100%' }">
+            <!-- bottom padding needed to solve a Firefox's crop bug -->
+            <div *ngIf="this.as" style="max-width: 109px; padding-bottom: 12px">
+                <div
+                    *ngFor="let color of colors"
+                    style="display: inline-block; padding: 0 4px 8px 4px"
+                    (mouseenter)="onShowPreview($event, this.as.bitmapFills[color.value], opPreview)"
+                    (mouseleave)="onHidePreview($event, opPreview)"
+                    (click)="onColorClick(color.value); onHidePreview($event, opPreview)"
+                >
+                    <button
+                        pButton
+                        type="button"
+                        class="no-outline"
+                        [icon]="getColorIcon(color.value)"
+                        [style.color]="this.as.bitmapFills[color.value].brightness > 0.7 ? '#666666' : '#FFFFFF'"
+                        [style.background-image]="
+                            this.as.bitmapFills[color.value].brightness >= 0.0
+                                ? 'url(' + this.as.bitmapFills[color.value].thumbnail + ')'
+                                : 'none'
+                        "
+                        [style.borderColor]="'#CCCCCC'"
+                    ></button>
+                </div>
+            </div>
+        </p-scrollPanel>
+    </div>
+</div>
+
+<p-overlayPanel #opPreview showTransitionOptions="0ms" hideTransitionOptions="0ms">
+    <div *ngIf="hoverImage" class="noselect">
+        <figure class="figure" *ngIf="hoverImage.url">
+            <img [src]="config.getAssetFullURL(hoverImage?.url)" alt="Preview" />
+            <figcaption class="figcaption">{{ hoverImage?.name }}</figcaption>
+        </figure>
+    </div>
+</p-overlayPanel>

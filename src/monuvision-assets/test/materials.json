@@ -1,0 +1,67 @@
+[
+    {
+        "type": "Monument Material",
+        "dark_image": "monuvision-assets/images/bahama_blue.png",
+        "light_image": "monuvision-assets/images/bahama_blue_sand.png",
+        "sort": 0,
+        "id": 8604,
+        "pitching_image": "monuvision-assets/images/bahama_blue_pitch.png",
+        "name": "Bahama Blue (no thumb)",
+        "admin_sort": 45
+    },
+    {
+        "type": "Monument Material",
+        "dark_image": "monuvision-assets/images/lite_gray.png",
+        "light_image": "monuvision-assets/images/lite_gray_sand.png",
+        "thumbnail": "monuvision-assets/images/thumbnail/thumb_lite_gray.png",
+        "sort": 0,
+        "id": 9072,
+        "pitching_image": "monuvision-assets/images/lite_gray_pitch.png",
+        "name": "Gray Lite",
+        "admin_sort": 1
+    },
+    {
+        "type": "Monument Material",
+        "dark_image": "monuvision-assets/images/india_mahogany.png",
+        "light_image": "monuvision-assets/images/india_mahogany_sand.png",
+        "thumbnail": "monuvision-assets/images/thumbnail/thumb_india_mahogany.png",
+        "sort": 0,
+        "id": 16189,
+        "pitching_image": "monuvision-assets/images/india_mahogany_pitch.png",
+        "name": "Mahogany 3",
+        "admin_sort": 12
+    },
+    {
+        "type": "Monument Material",
+        "dark_image": "monuvision-assets/images/emerald_pearl.png",
+        "light_image": "monuvision-assets/images/emerald_pearl_sand.png",
+        "thumbnail": "monuvision-assets/images/thumbnail/thumb_emerald_pearl.png",
+        "sort": 0,
+        "id": 41980,
+        "pitching_image": "monuvision-assets/images/emerald_pearl_pitch.png",
+        "name": "Royal Emerald / Emerald Pearl",
+        "admin_sort": 55
+    },
+    {
+        "type": "Monument Material",
+        "dark_image": "monuvision-assets/images/black_veil.png",
+        "light_image": "monuvision-assets/images/black_veil_sand.png",
+        "thumbnail": "monuvision-assets/images/thumbnail/thumb_black_veil.png",
+        "sort": 0,
+        "id": 69461,
+        "pitching_image": "monuvision-assets/images/black_veil_pitch.png",
+        "name": "Mesabi Black or Black Veil",
+        "admin_sort": 25
+    },
+    {
+        "type": "Monument Material",
+        "dark_image": "monuvision-assets/images/cloud_gray.png",
+        "light_image": "monuvision-assets/images/cloud_gray_sand.png",
+        "thumbnail": "monuvision-assets/images/thumbnail/thumb_cloud_gray.png",
+        "sort": 0,
+        "id": 160777,
+        "pitching_image": "monuvision-assets/images/cloud_gray_pitch.png",
+        "name": "St. Cloud Gray",
+        "admin_sort": 6
+    }
+]

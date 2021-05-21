@@ -1,0 +1,9 @@
+
+.icon-forward:before { content: '\e800'; } /* '' */
+.icon-ruler:before { content: '\e801'; } /* '' */
+.icon-vase:before { content: '\e802'; } /* '' */
+.icon-text:before { content: '\e803'; } /* '' */
+.icon-shape:before { content: '\e804'; } /* '' */
+.icon-grid:before { content: '\e805'; } /* '' */
+.icon-reply:before { content: '\f112'; } /* '' */
+.icon-tree:before { content: '\f1bb'; } /* '' */

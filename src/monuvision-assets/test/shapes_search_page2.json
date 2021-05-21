@@ -1,0 +1,22 @@
+{
+    "total": 24,
+    "shapes": [
+        {
+            "id": 3129756,
+            "name": "Cross 034",
+            "base_height": 6.0,
+            "base_depth": 12.0,
+            "base_width": 28.0,
+            "depth": 8.0,
+            "height": 36.0,
+            "width": 28.0,
+            "locked_dimensions": false,
+            "pattern": "Do not price this shape",
+            "keep_static": false,
+            "thumbnail": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMXRLRFE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--1b0f8067185dd3de82b944b71407861fef05949d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTVRJd2VEa3dCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f4c47a2c18e9e67d5e5ee65ce445857c88c0188e/Cross%20034%20Line%20Drawing.gif",
+            "dark_stone": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNUZLRFE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b063fcd29d5003dddaf40d85b4ac677fd82b9240/Cross%20034%20Polish%20Area.gif",
+            "light_stone": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBNUpLRFE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2f4b3fc65d412b1ab193a66ef7f60be01542d01d/Cross%20034%20Sanded%20Area.gif",
+            "additional_layer": null
+        }
+    ]
+}

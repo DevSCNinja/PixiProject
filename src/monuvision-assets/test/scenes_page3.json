@@ -1,0 +1,29 @@
+{
+    "total": 28,
+    "designs": [
+        {
+            "id": 631022,
+            "name": "curvedText",
+            "created_at": "2020-11-26T01:50:38.013Z",
+            "thumbnail": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBODU4Qmc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b178d4a025790cc3e4296ebd5572c314297107cb/631022.jpg"
+        },
+        {
+            "id": 629879,
+            "name": "My Design 03",
+            "created_at": "2020-11-26T01:47:03.936Z",
+            "thumbnail": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBeTE1Qmc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--715f95bc2b918fc079f7e510a0c77c8180c2d88b/629879.jpg"
+        },
+        {
+            "id": 621387,
+            "name": "ddd",
+            "created_at": "2020-11-26T01:21:49.517Z",
+            "thumbnail": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBN05mQmc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--b615e7f3a17e26df0602aaa8eed19398ad1c7487/621387.jpg"
+        },
+        {
+            "id": 620827,
+            "name": "11",
+            "created_at": "2020-11-26T01:20:28.247Z",
+            "thumbnail": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMVZlQmc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--a4426eaa4ceea4f1cd2890affa68e2fd78f3bfb8/620827.jpg"
+        }
+    ]
+}

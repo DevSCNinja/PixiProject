@@ -1,0 +1,354 @@
+<div #bottomToolbar>
+    <div style="font-size: 14px; display: flex; justify-content: center; align-items: flex-start">
+        <div style="display: flex; flex-direction: column; align-items: center">
+            <div style="height: 82px; margin-top: 4px; overflow-y: scroll; overflow-x: hidden; scrollbar-width: thin">
+                <div *ngFor="let shape of shapes">
+                    <div
+                        class="tool-item"
+                        style="padding: 4px 0 4px 0; margin: 0; width: 100%; background-clip: content-box"
+                        [class.shape-line]="isSelected(shape)"
+                    >
+                        <div class="tool-sub-item-first" style="min-width: 64px; text-align: right">
+                            {{
+                                isBaseShape(shape) ? (isSubBaseShape(shape) ? 'SubBase' : 'Base') : shapeService.getTabletAlias(shape.model)
+                            }}
+                        </div>
+                        <div class="tool-sub-item" pTooltip="&nbsp;X&nbsp;" tooltipPosition="top">
+                            <p-spinner
+                                [ngModel]="getRoundShapeSize(shape.model.width)"
+                                (ngModelChange)="onShapeWidthChange($event, shape)"
+                                [inputStyleClass]="'tool-spinner-input-small'"
+                                [step]="1"
+                                [min]="getRoundShapeSize(shape.model.minWidth) + 1"
+                                [max]="200"
+                                [disabled]="shape.model.lockDimensions"
+                            ></p-spinner>
+                        </div>
+                        <div
+                            *ngIf="shapeService.viewedFromTop(shape.model); then topView; else frontView"
+                            style="display: inline-block"
+                        ></div>
+                        <ng-template #topView>
+                            <div class="tool-sub-item" pTooltip="&nbsp;Y&nbsp;" tooltipPosition="top">
+                                <p-spinner
+                                    [ngModel]="getRoundShapeSize(shape.model.height)"
+                                    (ngModelChange)="onShapeHeightChange($event, shape)"
+                                    [inputStyleClass]="'tool-spinner-input-small'"
+                                    [step]="1"
+                                    [min]="getRoundShapeSize(shape.model.minHeight) + 1"
+                                    [max]="160"
+                                    [disabled]="shape.model.lockDimensions"
+                                ></p-spinner>
+                            </div>
+                            <div class="tool-sub-item" pTooltip="&nbsp;Z&nbsp;" tooltipPosition="top">
+                                <p-spinner
+                                    [(ngModel)]="shape.model.depth"
+                                    (ngModelChange)="onShapeDepthChange()"
+                                    [inputStyleClass]="'tool-spinner-input-small'"
+                                    [step]="1"
+                                    [min]="1"
+                                    [max]="48"
+                                    [disabled]="shape.model.lockDimensions"
+                                ></p-spinner>
+                            </div>
+                        </ng-template>
+                        <ng-template #frontView>
+                            <div class="tool-sub-item" pTooltip="&nbsp;Y&nbsp;" tooltipPosition="top">
+                                <p-spinner
+                                    [(ngModel)]="shape.model.depth"
+                                    (ngModelChange)="onShapeDepthChange()"
+                                    [inputStyleClass]="'tool-spinner-input-small'"
+                                    [step]="1"
+                                    [min]="1"
+                                    [max]="48"
+                                    [disabled]="shape.model.lockDimensions"
+                                ></p-spinner>
+                            </div>
+                            <div class="tool-sub-item" pTooltip="&nbsp;Z&nbsp;" tooltipPosition="top">
+                                <p-spinner
+                                    [ngModel]="getRoundShapeSize(shape.model.height)"
+                                    (ngModelChange)="onShapeHeightChange($event, shape)"
+                                    [inputStyleClass]="'tool-spinner-input-small'"
+                                    [step]="1"
+                                    [min]="getRoundShapeSize(shape.model.minHeight) + 1"
+                                    [max]="160"
+                                    [disabled]="shape.model.lockDimensions"
+                                ></p-spinner>
+                            </div>
+                        </ng-template>
+                        <div class="tool-sub-item">
+                            <p-dropdown
+                                [options]="polishes.get(shape)"
+                                [(ngModel)]="shape.model.polish"
+                                scrollHeight="500px"
+                                placeholder="..."
+                                (onChange)="onShapePolishChange($event.value, shape)"
+                                (onShow)="onShapePolishDropdownShow()"
+                                styleClass="dropdown-small"
+                                [appendTo]="bottomToolbar"
+                            >
+                                <ng-template let-polish pTemplate="item">
+                                    <div
+                                        class="ui-helper-clearfix"
+                                        style="position: relative; height: 25px"
+                                        [pTooltip]="getShapePolishTip(polish.value, shape)"
+                                        tooltipPosition="right"
+                                        hideDelay="500 ms"
+                                    >
+                                        <div style="float: left">{{ polish.label }}</div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                        </div>
+                        <div class="tool-sub-item">
+                            <div style="display: inline-block; min-width: 54px; margin-right: 5px">
+                                {{ this.shapeService.getShapeWeight(shape).toFixed(0) }} lbs
+                            </div>
+
+                            <button
+                                pButton
+                                type="button"
+                                icon="pi pi-times"
+                                (click)="onShapeDelete(shape)"
+                                class="transparent-btn no-outline ui-button-rounded ui-button-secondary"
+                            ></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="display: block; margin-top: 4px">
+                <div class="tool-item">
+                    <p-button type="button" icon="pi pi-plus" label="Tablet" (onClick)="onTabletAdd()"></p-button>
+                </div>
+                <div class="tool-item">
+                    <p-button type="button" icon="pi pi-plus" label="Base" [disabled]="!basesAllowed" (onClick)="onBaseAdd()"></p-button>
+                </div>
+                <div class="tool-item">
+                    <p-button
+                        type="button"
+                        icon="pi pi-plus"
+                        label="Sub Base"
+                        [disabled]="!subBasesAllowed"
+                        (onClick)="onSubBaseAdd()"
+                    ></p-button>
+                </div>
+            </div>
+        </div>
+
+        <div class="v-delimiter-thick" style="height: 112px; margin: 10px 10px 10px 10px"></div>
+
+        <div>
+            <div class="tool-item" style="margin-top: 8px; display: flex; align-items: center">
+                <div class="tool-sub-item-first" style="text-align: right; min-width: 112px">Sinkage Color</div>
+
+                <div class="slot-arrow">
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-caret-left"
+                        (click)="moveSlotsLeft('sinkage')"
+                        (touchend)="moveSlotsLeft('sinkage', true); ds.removeDelayedLoop()"
+                        (mouseover)="onSlotsArrowLeft($event, 'sinkage')"
+                        (touchstart)="onSlotsArrowLeft($event, 'sinkage')"
+                        (mouseup)="ds.removeDelayedLoop()"
+                        (mouseleave)="ds.removeDelayedLoop()"
+                        (mouseout)="ds.removeDelayedLoop()"
+                        (touchcancel)="ds.removeDelayedLoop()"
+                        (touchleave)="ds.removeDelayedLoop()"
+                        (touchmove)="ds.onTouchMove($event)"
+                        [disabled]="!isLeftArrowActive('sinkage')"
+                        [style.cursor]="isLeftArrowActive('sinkage') ? 'pointer' : 'auto'"
+                        class="transparent-btn no-outline ui-button-rounded ui-button-secondary"
+                    ></button>
+                </div>
+
+                <div *ngFor="let sColor of this.as.sinkageColors | keyvalue; index as i" style="display: inline-block">
+                    <div *ngIf="isSlotVisible('sinkage', i)" class="tool-sub-item">
+                        <button
+                            pTooltip="{{ sColor.value.name }}"
+                            tooltipPosition="top"
+                            pButton
+                            type="button"
+                            class="no-outline"
+                            (click)="onSinkageColorClick(sColor.key)"
+                            [icon]="getSinkageColorIcon(sColor.key)"
+                            [style.color]="sColor.value.brightness > 0.7 ? '#666666' : '#FFFFFF'"
+                            [style.background-color]="ds.colorItemToRGBA(sColor.value) | safe: 'style'"
+                            [style.borderColor]="'#CCCCCC'"
+                        ></button>
+                    </div>
+                </div>
+
+                <div class="slot-arrow">
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-caret-right"
+                        (click)="moveSlotsRight('sinkage')"
+                        (touchend)="moveSlotsRight('sinkage', true); ds.removeDelayedLoop()"
+                        (mouseover)="onSlotsArrowRight($event, 'sinkage')"
+                        (touchstart)="onSlotsArrowRight($event, 'sinkage')"
+                        (mouseup)="ds.removeDelayedLoop()"
+                        (mouseleave)="ds.removeDelayedLoop()"
+                        (mouseout)="ds.removeDelayedLoop()"
+                        (touchcancel)="ds.removeDelayedLoop()"
+                        (touchleave)="ds.removeDelayedLoop()"
+                        (touchmove)="ds.onTouchMove($event)"
+                        [disabled]="!isRightArrowActive('sinkage')"
+                        [style.cursor]="isRightArrowActive('sinkage') ? 'pointer' : 'auto'"
+                        class="transparent-btn no-outline ui-button-rounded ui-button-secondary"
+                    ></button>
+                </div>
+            </div>
+
+            <div class="tool-item" style="margin-top: 8px; display: flex; align-items: center">
+                <div class="tool-sub-item-first" style="text-align: right; min-width: 112px">Art Options</div>
+
+                <div class="slot-arrow">
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-caret-left"
+                        (click)="moveSlotsLeft('art')"
+                        (touchend)="moveSlotsLeft('art', true); ds.removeDelayedLoop()"
+                        (mouseover)="onSlotsArrowLeft($event, 'art')"
+                        (touchstart)="onSlotsArrowLeft($event, 'art')"
+                        (mouseup)="ds.removeDelayedLoop()"
+                        (mouseleave)="ds.removeDelayedLoop()"
+                        (mouseout)="ds.removeDelayedLoop()"
+                        (touchcancel)="ds.removeDelayedLoop()"
+                        (touchleave)="ds.removeDelayedLoop()"
+                        (touchmove)="ds.onTouchMove($event)"
+                        [disabled]="!isLeftArrowActive('art')"
+                        [style.cursor]="isLeftArrowActive('art') ? 'pointer' : 'auto'"
+                        class="transparent-btn no-outline ui-button-rounded ui-button-secondary"
+                    ></button>
+                </div>
+
+                <div style="display: inline-block" (mouseleave)="ds.leftSlotsAfterDragStart = true">
+                    <div *ngFor="let element of this.artService.recentArtImages; index as i" style="display: inline-block">
+                        <div *ngIf="isSlotVisible('art', i)" class="tool-sub-item">
+                            <div
+                                pTooltip="{{ element && element.image ? '' : ds.artSlotsTooltipText }}"
+                                tooltipPosition="top"
+                                showDelay="0"
+                                [style.borderColor]="'#CCCCCC'"
+                                [style.cursor]="element.thumbnail ? 'grab' : 'auto'"
+                                (mouseenter)="onShowPreview($event, element, opPreview)"
+                                (mouseleave)="onHidePreview($event, opPreview)"
+                                pDroppable="dd"
+                                (onDrop)="ds.onDrop($event, i); onHidePreview($event, opPreview)"
+                                pDraggable="dd"
+                                (onDragStart)="ds.onDragStart($event, element, true); onHidePreview($event, opPreview)"
+                                (onDragEnd)="ds.onDragEnd($event); onHidePreview($event, opPreview)"
+                                class="slot art-slot"
+                            >
+                                <img
+                                    *ngIf="element.thumbnail"
+                                    style="pointer-events: none; max-width: 32px; max-height: 32px"
+                                    [src]="config.getAssetFullURL(element.thumbnail ? element.thumbnail : element.image)"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slot-arrow">
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-caret-right"
+                        (click)="moveSlotsRight('art')"
+                        (touchend)="moveSlotsRight('art', true); ds.removeDelayedLoop()"
+                        (mouseover)="onSlotsArrowRight($event, 'art')"
+                        (touchstart)="onSlotsArrowRight($event, 'art')"
+                        (mouseup)="ds.removeDelayedLoop()"
+                        (mouseleave)="ds.removeDelayedLoop()"
+                        (mouseout)="ds.removeDelayedLoop()"
+                        (touchcancel)="ds.removeDelayedLoop()"
+                        (touchleave)="ds.removeDelayedLoop()"
+                        (touchmove)="ds.onTouchMove($event)"
+                        [disabled]="!isRightArrowActive('art')"
+                        [style.cursor]="isRightArrowActive('art') ? 'pointer' : 'auto'"
+                        class="transparent-btn no-outline ui-button-rounded ui-button-secondary"
+                    ></button>
+                </div>
+            </div>
+            <div class="tool-item" style="margin-top: 8px; display: flex; align-items: center">
+                <div class="tool-sub-item-first" style="text-align: right; min-width: 112px">Recently Saved</div>
+
+                <div class="slot-arrow">
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-caret-left"
+                        (click)="moveSlotsLeft('scene')"
+                        (touchend)="moveSlotsLeft('scene', true); ds.removeDelayedLoop()"
+                        (mouseover)="onSlotsArrowLeft($event, 'scene')"
+                        (touchstart)="onSlotsArrowLeft($event, 'scene')"
+                        (mouseup)="ds.removeDelayedLoop()"
+                        (mouseleave)="ds.removeDelayedLoop()"
+                        (mouseout)="ds.removeDelayedLoop()"
+                        (touchcancel)="ds.removeDelayedLoop()"
+                        (touchleave)="ds.removeDelayedLoop()"
+                        (touchmove)="ds.onTouchMove($event)"
+                        [disabled]="!isLeftArrowActive('scene')"
+                        [style.cursor]="isLeftArrowActive('scene') ? 'pointer' : 'auto'"
+                        class="transparent-btn no-outline ui-button-rounded ui-button-secondary"
+                    ></button>
+                </div>
+
+                <div *ngFor="let element of this.ss.recentSceneImages; index as i" style="display: inline-block">
+                    <div *ngIf="isSlotVisible('scene', i)" class="tool-sub-item">
+                        <div
+                            [style.cursor]="element.thumbnail ? 'pointer' : 'auto'"
+                            [style.borderColor]="'#CCCCCC'"
+                            (mouseenter)="onShowPreview($event, element, opPreview)"
+                            (mouseleave)="onHidePreview($event, opPreview)"
+                            (click)="onSceneOpen(element); onHidePreview($event, opPreview)"
+                            class="slot"
+                        >
+                            <img
+                                *ngIf="element.thumbnail"
+                                style="pointer-events: none; max-width: 32px; max-height: 32px"
+                                [src]="config.getAssetFullURL(element.thumbnail ? element.thumbnail : element.image)"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slot-arrow">
+                    <button
+                        pButton
+                        type="button"
+                        icon="pi pi-caret-right"
+                        (click)="moveSlotsRight('scene')"
+                        (touchend)="moveSlotsRight('scene', true); ds.removeDelayedLoop()"
+                        (mouseover)="onSlotsArrowRight($event, 'scene')"
+                        (touchstart)="onSlotsArrowRight($event, 'scene')"
+                        (mouseup)="ds.removeDelayedLoop()"
+                        (mouseleave)="ds.removeDelayedLoop()"
+                        (mouseout)="ds.removeDelayedLoop()"
+                        (touchcancel)="ds.removeDelayedLoop()"
+                        (touchleave)="ds.removeDelayedLoop()"
+                        (touchmove)="ds.onTouchMove($event)"
+                        [disabled]="!isRightArrowActive('scene')"
+                        [style.cursor]="isRightArrowActive('scene') ? 'pointer' : 'auto'"
+                        class="transparent-btn no-outline ui-button-rounded ui-button-secondary"
+                    ></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-overlayPanel #opPreview showTransitionOptions="0ms" hideTransitionOptions="0ms">
+    <div *ngIf="hoverImage" class="noselect">
+        <figure class="figure" *ngIf="hoverImage.image">
+            <img [src]="config.getAssetFullURL(hoverImage?.image)" alt="Preview" />
+            <figcaption class="figcaption">{{ hoverImage?.title }}</figcaption>
+        </figure>
+        <div class="figcaption" *ngIf="!hoverImage.image" style="text-align: center">{{ hoverImage?.title }}</div>
+    </div>
+</p-overlayPanel>

@@ -1,0 +1,23 @@
+<div class="main-grid-bg noselect" style="display: flex; flex-direction: column; width: 100%; height: 100%">
+    <top-toolbar style="flex: 0 0 66px; max-height: 66px; width: 100%; overflow: visible"></top-toolbar>
+    <div style="flex: 1 1 200px; display: flex; width: 100%; overflow: hidden">
+        <vertical-toolbar style="flex: 0 0 109px; max-width: 109px; height: 100%"></vertical-toolbar>
+        <design-space
+            style="flex: 1 1 auto; height: 100%; overflow: hidden"
+            pDroppable="dd"
+            (onDrop)="ds.onDropToCanvas($event)"
+        ></design-space>
+    </div>
+    <bottom-toolbar style="flex: 0 0 132px; max-height: 132px; width: 100%"></bottom-toolbar>
+</div>
+<p-blockUI [blocked]="ui.blockUIForGestures" [baseZIndex]="11000">
+    <div
+        (touchend)="ui.hideGesturesPopup()"
+        style="width: 100%; height: 100%; background-image: url('monuvision-assets/images/gesture-scale.png'); background-repeat: repeat"
+    ></div>
+</p-blockUI>
+<p-blockUI [blocked]="ui.blockUIPreloader" [baseZIndex]="11001">
+    <div *ngIf="ui.blockUIPreloader" style="position: absolute; top: 45%; left: 50%" class="preloader-text">
+        {{ ds.preloaderText }}
+    </div>
+</p-blockUI>

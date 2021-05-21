@@ -1,0 +1,200 @@
+<design>
+    <isFront>true</isFront>
+    <oppositeSideID>-1</oppositeSideID>
+    <area>
+      <piece type="GROUP">
+        <x>920.2</x>
+        <y>2400</y>
+        <sX>0</sX>
+        <sY>0</sY>
+        <r>0</r>
+        <ID>88389874</ID>
+        <piece type="PRINTED TEXT">
+          <string>First  Line   ~^#SECOND</string>
+          <font>0,1011|15,1030</font>
+          <size>0,5.5|15,5.5</size>
+          <lineSpacing>1.25,1</lineSpacing>
+          <spacing>0.0625</spacing>
+          <bold>false</bold>
+          <polish>false</polish>
+          <frost>false</frost>
+          <outline>false</outline>
+          <justify>1</justify>
+          <shapeEnabled>false</shapeEnabled>
+          <shapeAdjust>0.75</shapeAdjust>
+          <sinkage>gold</sinkage>
+          <x>878.85</x>
+          <y>761.8</y>
+          <sX>1</sX>
+          <sY>1</sY>
+          <r>-7.314768829792749</r>
+          <ID>36056414</ID>
+        </piece>
+        <piece type="COMPONENT">
+          <compID>162482</compID>
+          <name>MV Bee 002</name>
+          <imageFile>/sites/default/files/component/10/mv_bee_002.gif</imageFile>
+          <inverted>false</inverted>
+          <drawSimple>false</drawSimple>
+          <etching>not an etching</etching>
+          <frostingVisible>true</frostingVisible>
+          <sinkage>black</sinkage>
+          <flipped>false</flipped>
+          <minWidth>0.6666666666666666</minWidth>
+          <minHeight>0.6666666666666666</minHeight>
+          <x>452.05</x>
+          <y>814.35</y>
+          <sX>0.14091503267973857</sX>
+          <sY>0.14078740157480316</sY>
+          <r>-14.112645211081407</r>
+          <ID>70118895</ID>
+        </piece>
+        <piece type="COMPONENT">
+          <compID>162482</compID>
+          <name>MV Bee 002</name>
+          <imageFile>/sites/default/files/component/10/mv_bee_002.gif</imageFile>
+          <inverted>false</inverted>
+          <drawSimple>false</drawSimple>
+          <etching>not an etching</etching>
+          <frostingVisible>false</frostingVisible>
+          <sinkage>gold</sinkage>
+          <flipped>true</flipped>
+          <minWidth>0.6666666666666666</minWidth>
+          <minHeight>0.6666666666666666</minHeight>
+          <x>1276.75</x>
+          <y>814.35</y>
+          <sX>0.14091503267973857</sX>
+          <sY>0.14078740157480316</sY>
+          <r>14.112645211081407</r>
+          <ID>11312493</ID>
+        </piece>
+        <piece type="PANEL">
+          <compID>4758</compID>
+          <name>In gods care04</name>
+          <imageFile>/sites/default/files/ingodscare04_6.62x2.91.gif</imageFile>
+          <inverted>false</inverted>
+          <drawSimple>false</drawSimple>
+          <etching>not an etching</etching>
+          <frostingVisible>true</frostingVisible>
+          <sinkage>gold</sinkage>
+          <flipped>false</flipped>
+          <minWidth>0.6666666666666666</minWidth>
+          <minHeight>0.6666666666666666</minHeight>
+          <resizeRect>0,0,0,0</resizeRect>
+          <x>947.25</x>
+          <y>885.85</y>
+          <sX>0.9175615212527962</sX>
+          <sY>0.6</sY>
+          <r>0</r>
+          <ID>52616908</ID>
+        </piece>
+        <piece type="PANEL">
+          <compID>4758</compID>
+          <name>In gods care04</name>
+          <imageFile>/sites/default/files/ingodscare04_6.62x2.91.gif</imageFile>
+          <inverted>false</inverted>
+          <drawSimple>false</drawSimple>
+          <etching>not an etching</etching>
+          <frostingVisible>true</frostingVisible>
+          <sinkage>gold</sinkage>
+          <flipped>false</flipped>
+          <minWidth>0.6666666666666666</minWidth>
+          <minHeight>0.6666666666666666</minHeight>
+          <resizeRect>0,0,0,0</resizeRect>
+          <x>-1.5</x>
+          <y>237.95000000000005</y>
+          <sX>0.9175615212527962</sX>
+          <sY>0.6</sY>
+          <r>0</r>
+          <ID>71807271</ID>
+        </piece>
+        <piece type="VASE">
+          <compID>704</compID>
+          <name>10 x 10</name>
+          <imageFile>/sites/default/files/8x10_square from hcents_0.gif</imageFile>
+          <inchWidth>10</inchWidth>
+          <inchHeight>10</inchHeight>
+          <priceType>square granite</priceType>
+          <color>9072</color>
+          <x>1371.0500000000002</x>
+          <y>1115.35</y>
+          <sX>0.5244755244755245</sX>
+          <sY>0.41666666666666674</sY>
+          <r>0</r>
+          <ID>84532147</ID>
+        </piece>
+        <piece type="VASE">
+          <compID>52415</compID>
+          <name>US Metalcraft Supreme Mahogany</name>
+          <imageFile>/sites/default/files/us_metalcraft_supreme_mahogany_-_copy.gif</imageFile>
+          <inchWidth>4</inchWidth>
+          <inchHeight>11</inchHeight>
+          <priceType>premium metal</priceType>
+          <color>9072</color>
+          <x>175.85000000000002</x>
+          <y>838.65</y>
+          <sX>0.1729106628242075</sX>
+          <sY>0.165</sY>
+          <r>0</r>
+          <ID>1066060</ID>
+        </piece>
+      </piece>
+    </area>
+  </design>
+  <monument>
+    <tablet n="0">
+      <shape>CUSTOM</shape>
+      <id>637282</id>
+      <name>Cross 030A</name>
+      <lightImage>sites/default/files/cross_030_sanded_area.gif</lightImage>
+      <darkImage>sites/default/files/cross_030_polish_area_png.png</darkImage>
+      <width>660</width>
+      <height>1200</height>
+      <depth>300</depth>
+      <polish>2</polish>
+      <pattern>0</pattern>
+      <flipped>false</flipped>
+      <color>8604</color>
+      <hidden>false</hidden>
+      <posX>-460.1</posX>
+    </tablet>
+    <tablet n="1">
+      <shape>1</shape>
+      <width>908.7</width>
+      <height>360</height>
+      <depth>120</depth>
+      <polish>5</polish>
+      <color>8604</color>
+      <hidden>false</hidden>
+      <posX>402.75</posX>
+    </tablet>
+    <base n="0">
+      <shape>101</shape>
+      <width>720</width>
+      <height>120</height>
+      <depth>210</depth>
+      <polish>1</polish>
+      <color>8604</color>
+      <hidden>false</hidden>
+      <posX>423.1</posX>
+    </base>
+    <base n="1">
+      <shape>101</shape>
+      <width>446.5999999999999</width>
+      <height>120</height>
+      <depth>210</depth>
+      <polish>6</polish>
+      <color>8604</color>
+      <hidden>false</hidden>
+      <posX>416.15</posX>
+    </base>
+  </monument>
+  <instructions/>
+  <background>
+    <id>378939</id>
+    <monX>500</monX>
+    <monY>700</monY>
+    <pixPerFoot>75.39999999999999</pixPerFoot>
+    <imagePath>sites/default/files/background_011.jpg</imagePath>
+  </background>
+</data>

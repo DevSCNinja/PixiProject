@@ -1,0 +1,26 @@
+[
+    {
+        "header": "Mode",
+        "text": "The <a href='https://en.wikipedia.org/wiki/Calculator' target='_blank'>calculator</a> has two modes, Tournament and Cash. Options and denominations will vary between modes.<div><img src='monuvision-assets/images/tiger.png'/></div>"
+    },
+
+    {
+        "header": "Number of Rebuys",
+        "text": "Choose how many rebuys for the game. If you add rebuys then you must choose either Standard or Custom.<ul><li>Standard - The number of rebuys would multiply the number of start stack chips. <br><br><i>Example:</i>&nbsp;&nbsp;If you have 8 x T25s in the starting stack column and you added 5 rebuys, this would add 40 additional T25 chips to the Rebuy Chips column.</li><br><li>Custom - Give you the ability to add chips directly to the Rebuy Chips column.</li></ul>"
+    },
+
+    {
+        "header": "Color Up Chips (Tournament Mode only)",
+        "text": "Color Up Chips allows you to remove the lower denomination chips from the game and replace them with higher denomination chips when the blinds reach a certain level. You can choose None, Standard, and Custom.<ul><li>None – No color chips can be added. You will not have the option to make selections in the Color Up Column.</li><br><li>Standard – This mode will automatically calculate how many higher denomination chips you will need to remove the lower denomination chips just below it.<br><br><i>Example:</i>&nbsp;&nbsp;You have 200 x T25 chips. A value of 5000. When you click the check box in the Color Up Column for the T25 chip, it will add 50 x T100 chips to the Color Up Column. Now you have 200 x T100 chips PLUS the 50 x T100 you added to color up the T25s. A value of 25,000. When you click the check box in the Color Up Column for the T100 chips, it will add 50 x T500 chips to the Color Up Column. This will continue for each denomination you choose to color up.</li><br><li>Custom – This mode will allow you to add chips directly to the Color Up Chips column. The check boxes are not used in this mode.</li></ul>"
+    },
+
+    {
+        "header": "Chip Value Selection (Default prefill only)",
+        "text": "Choose which denomination you are going to use before you proceed to add chips."
+    },
+
+    {
+        "header": "Round Up Chips",
+        "text": "This option will allow you to round up a denomination to the nearest Barrel (multiple of 20) or Rack (100 chips). You can choose one or the other but not both.<br><br><i>Examples:</i><ul><li>If you have 101 chips, the Barrel option would add 19 chips (120 total) and the Rack option would add 99 chips (200 total).</li><br><li>If you had 164 chips, the Barrel option would add 16 chips (180 total) and the Rack option would add 36 chips (200 total).</li><br><li>If you have 81 chips, the Barrel or Rack option would do the same thing. You would have 100 chips.</li></ul>"
+    }
+]

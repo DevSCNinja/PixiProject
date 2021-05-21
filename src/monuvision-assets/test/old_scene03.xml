@@ -1,0 +1,101 @@
+<data>
+<design>
+    <isFront>true</isFront>
+    <oppositeSideID>-1</oppositeSideID>
+    <area>
+      <piece type="GROUP">
+        <x>0</x>
+        <y>485</y>
+        <sX>1</sX>
+        <sY>1</sY>
+        <r>0</r>
+        <ID>86065856</ID>
+        <piece type="PANEL">
+          <compID>7250</compID>
+          <name>MV Children Panel 065v</name>
+          <imageFile>/sites/default/files/b0952c_0.gif</imageFile>
+          <inverted>false</inverted>
+          <drawSimple>false</drawSimple>
+          <etching>not an etching</etching>
+          <frostingVisible>true</frostingVisible>
+          <sinkage>gray</sinkage>
+          <flipped>false</flipped>
+          <minWidth>15.2</minWidth>
+          <minHeight>6.649999999999999</minHeight>
+          <resizeRect>0,0,0,0</resizeRect>
+          <x>-43.5</x>
+          <y>149.5</y>
+          <sX>0.580351262349067</sX>
+          <sY>0.580958230958231</sY>
+          <r>0</r>
+          <ID>90091144</ID>
+        </piece>
+        <piece type="PANEL">
+          <compID>24952</compID>
+          <name>MV Std Panel 002v</name>
+          <imageFile>/sites/default/files/std_single_line.gif</imageFile>
+          <inverted>false</inverted>
+          <drawSimple>false</drawSimple>
+          <etching>not an etching</etching>
+          <frostingVisible>true</frostingVisible>
+          <sinkage>gray</sinkage>
+          <flipped>false</flipped>
+          <minWidth>0.6666666666666666</minWidth>
+          <minHeight>0.6666666666666666</minHeight>
+          <resizeRect>60,60,60,60</resizeRect>
+          <x>46.7</x>
+          <y>309.6</y>
+          <sX>0.7598409542743538</sX>
+          <sY>0.4353474555182282</sY>
+          <r>0</r>
+          <ID>49201470</ID>
+        </piece>
+        <piece type="PRINTED TEXT">
+          <string>SDFASDFASDFASDFASDF</string>
+          <font>0,1015</font>
+          <size>0,0.875</size>
+          <lineSpacing>0.5</lineSpacing>
+          <spacing>0.0625</spacing>
+          <bold>false</bold>
+          <polish>false</polish>
+          <frost>false</frost>
+          <outline>false</outline>
+          <justify>1</justify>
+          <shapeEnabled>false</shapeEnabled>
+          <shapeAdjust>0.75</shapeAdjust>
+          <sinkage>gray</sinkage>
+          <x>-0.45</x>
+          <y>191.75</y>
+          <sX>1</sX>
+          <sY>1</sY>
+          <r>0</r>
+          <ID>97404786</ID>
+        </piece>
+      </piece>
+    </area>
+  </design>
+  <monument>
+    <tablet n="0">
+      <shape>1</shape>
+      <width>540</width>
+      <height>360</height>
+      <depth>120</depth>
+      <polish>5</polish>
+      <color>9072</color>
+      <hidden>false</hidden>
+      <posX>0</posX>
+    </tablet>
+    <base n="0">
+      <shape>101</shape>
+      <width>720</width>
+      <height>120</height>
+      <depth>210</depth>
+      <polish>1</polish>
+      <color>9072</color>
+      <hidden>false</hidden>
+      <posX>0</posX>
+    </base>
+  </monument>
+  <instructions/>
+  <background>0</background>
+</data>

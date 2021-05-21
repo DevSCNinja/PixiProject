@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?><xml>
+  <node>
+    <Type>Monument Material</Type>
+    <DarkImage>monuvision-assets/images/bahama_blue.png</DarkImage>
+    <LightImage>monuvision-assets/images/bahama_blue_sand.png</LightImage>
+    <Thumbnail>monuvision-assets/images/thumbnail/thumb_bahama_blue.png</Thumbnail>
+    <Sort>0</Sort>
+    <ID>8604</ID>
+    <PitchingImage>monuvision-assets/images/bahama_blue_pitch.png</PitchingImage>
+    <Name>Bahama Blue</Name>
+    <AdminSort>45</AdminSort>
+  </node>
+  <node>
+    <Type>Monument Material</Type>
+    <DarkImage>monuvision-assets/images/lite_gray.png</DarkImage>
+    <LightImage>monuvision-assets/images/lite_gray_sand.png</LightImage>
+    <Thumbnail>monuvision-assets/images/thumbnail/thumb_lite_gray.png</Thumbnail>
+    <Sort>0</Sort>
+    <ID>9072</ID>
+    <PitchingImage>monuvision-assets/images/lite_gray_pitch.png</PitchingImage>
+    <Name>Gray Lite</Name>
+    <AdminSort>1</AdminSort>
+  </node>
+  <node>
+    <Type>Monument Material</Type>
+    <DarkImage>monuvision-assets/images/india_mahogany.png</DarkImage>
+    <LightImage>monuvision-assets/images/india_mahogany_sand.png</LightImage>
+    <Thumbnail>monuvision-assets/images/thumbnail/thumb_india_mahogany.png</Thumbnail>
+    <Sort>0</Sort>
+    <ID>16189</ID>
+    <PitchingImage>monuvision-assets/images/india_mahogany_pitch.png</PitchingImage>
+    <Name>Mahogany 3</Name>
+    <AdminSort>12</AdminSort>
+  </node>
+  <node>
+    <Type>Monument Material</Type>
+    <DarkImage>monuvision-assets/images/emerald_pearl.png</DarkImage>
+    <LightImage>monuvision-assets/images/emerald_pearl_sand.png</LightImage>
+    <Thumbnail>monuvision-assets/images/thumbnail/thumb_emerald_pearl.png</Thumbnail>
+    <Sort>0</Sort>
+    <ID>41980</ID>
+    <PitchingImage>monuvision-assets/images/emerald_pearl_pitch.png</PitchingImage>
+    <Name>Royal Emerald / Emerald Pearl</Name>
+    <AdminSort>55</AdminSort>
+  </node>
+  <node>
+    <Type>Monument Material</Type>
+    <DarkImage>monuvision-assets/images/black_veil.png</DarkImage>
+    <LightImage>monuvision-assets/images/black_veil_sand.png</LightImage>
+    <Thumbnail>monuvision-assets/images/thumbnail/thumb_black_veil.png</Thumbnail>
+    <Sort>0</Sort>
+    <ID>69461</ID>
+    <PitchingImage>monuvision-assets/images/black_veil_pitch.png</PitchingImage>
+    <Name>Mesabi Black or Black Veil</Name>
+    <AdminSort>25</AdminSort>
+  </node>
+  <node>
+    <Type>Monument Material</Type>
+    <DarkImage>monuvision-assets/images/cloud_gray.png</DarkImage>
+    <LightImage>monuvision-assets/images/cloud_gray_sand.png</LightImage>
+    <Thumbnail>monuvision-assets/images/thumbnail/thumb_cloud_gray.png</Thumbnail>
+    <Sort>0</Sort>
+    <ID>160777</ID>
+    <PitchingImage>monuvision-assets/images/cloud_gray_pitch.png</PitchingImage>
+    <Name>St. Cloud Gray</Name>
+    <AdminSort>6</AdminSort>
+  </node>
+</xml>

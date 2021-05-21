@@ -1,0 +1,20 @@
+{
+    "id": 3628,
+    "email": "shirokiv@gmail.com",
+    "site_id": 1,
+    "company_id": 711425,
+    "first_name": "Vitaliy",
+    "last_name": "Shirokiy",
+    "phone": "2707965063",
+    "manufacturers_note": "<b>Note TEST: </b><small>Please make any minor adjustments necessary in this conceptual design to insure best quality production. Thank you.\n\nSigned ____________________________________________         Date________________</small>",
+    "copyright_notice": "<b>Copyright TEST: </b><small>This design, layout, look, appearance and graphics are property of MonumentPro, Inc, and the memorial company listed above and is protected by applicable copyright laws.  Unauthorized use or duplication is prohibited.</small>",
+    "user_logo": "monuvision-assets/images/tree.png",
+    "monuvision_override_logo": "monuvision-assets/images/ball.png",
+    "company_logo": "monuvision-assets/images/tree2.png",
+    "submit_button": {
+        "show": true,
+        "text": "Buy Now!",
+        "pricing": true
+    },
+    "pricing": true
+}

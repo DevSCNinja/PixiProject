@@ -1,0 +1,479 @@
+<p-dialog
+    [visible]="visible"
+    (visibleChange)="visibleChange.emit($event)"
+    [minX]="minX"
+    [minY]="minY"
+    [positionLeft]="positionLeft"
+    [positionTop]="positionTop"
+    [style]="containerStyle"
+    [contentStyle]="contentStyle"
+    [focusOnShow]="false"
+    dismissableMask="false"
+    styleClass="library-dialog"
+    (onHide)="onHide()"
+>
+    <p-header>
+        {{ header }}
+    </p-header>
+
+    <div *ngIf="compactLayout" style="box-sizing: border-box" [style.paddingBottom.px]="uploadVisible ? 0 : 15">
+        <div
+            style="
+                position: sticky;
+                position: -webkit-sticky;
+                top: 0;
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+            "
+        >
+            <div style="width: 100%">
+                <div style="min-height: 3px">
+                    <p-progressBar
+                        [style.display]="isLoadingFiles || isRemovingFiles ? 'block' : 'none'"
+                        mode="indeterminate"
+                        [style]="{ height: '3px' }"
+                    ></p-progressBar>
+                </div>
+            </div>
+            <div [style.display]="searchVisible ? 'block' : 'none'" style="margin: 12px 0px 0px 0px" class="ui-inputgroup">
+                <input
+                    #searchInputCompact
+                    type="search"
+                    pInputText
+                    placeholder="Search"
+                    (keydown)="onSearchKeyDown($event, searchInputCompact.value)"
+                    style="width: 250px"
+                />
+                <button
+                    *ngIf="!subSearchVisible"
+                    pButton
+                    type="button"
+                    icon="pi pi-search"
+                    (click)="onSearch(searchInputCompact.value)"
+                    class="no-outline"
+                ></button>
+                <button
+                    *ngIf="subSearchVisible"
+                    pButton
+                    type="button"
+                    label="Current"
+                    icon="pi pi-search"
+                    (click)="onSubSearch(searchInputCompact.value)"
+                    class="no-outline"
+                    showDelay="600"
+                    pTooltip="Search in the current folder"
+                    tooltipPosition="top"
+                    tooltipZIndex="1000000"
+                ></button>
+                <button
+                    *ngIf="subSearchVisible"
+                    pButton
+                    type="button"
+                    label="All"
+                    icon="pi pi-search"
+                    (click)="onSearch(searchInputCompact.value)"
+                    class="no-outline"
+                    style="margin-left: 1px"
+                    showDelay="600"
+                    pTooltip="Search in all the folders"
+                    tooltipPosition="top"
+                    tooltipZIndex="1000000"
+                ></button>
+            </div>
+            <div [style.display]="searchVisible ? 'block' : 'none'" style="width: 100%; padding: 0 15px 0 15px">
+                <p-message [style.display]="!isLoadingFiles && notFound ? 'block' : 'none'" severity="info" text="Not found"></p-message>
+                <div class="h-delimiter" style="width: 100%; margin-top: 15px"></div>
+            </div>
+            <div style="width: 100%">
+                <p-breadcrumb
+                    [style.display]="selectedNode && crumbs.length > 0 ? 'block' : 'none'"
+                    [model]="crumbs"
+                    [home]="homeCrumb"
+                ></p-breadcrumb>
+            </div>
+        </div>
+        <div [style.display]="compactTreeVisible ? 'block' : 'none'" [style.paddingTop.px]="!searchVisible ? 12 : 0">
+            <div
+                class="ui-listbox"
+                style="display: flex; flex-direction: column; flex-wrap: wrap; height: 100%; border-width: 0; padding: 0 6px"
+                [style.maxHeight.px]="getCompactTreeMaxHeight()"
+            >
+                <ng-container *ngIf="selectedNode; then listNodes; else listHomeNodes"></ng-container>
+                <ng-template #listHomeNodes>
+                    <div *ngFor="let node of nodes">
+                        <div
+                            *ngIf="!isLoadingFiles"
+                            (click)="onNodeSelect({ node: node })"
+                            class="ui-listbox-item"
+                            style="display: inline-block; padding: 0px 6px 4px 6px; font-size: 13px; min-width: 180px"
+                        >
+                            <span>{{ node.label }}</span>
+                            <span
+                                *ngIf="node.data.description"
+                                class="pi pi-info-circle"
+                                style="padding: 0 0 0 5px"
+                                pTooltip="{{ node.data.description }}"
+                                tooltipPosition="top"
+                                tooltipZIndex="1000000"
+                            ></span>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template #listNodes>
+                    <div *ngFor="let node of selectedNode.children">
+                        <div
+                            (click)="onNodeSelect({ node: node })"
+                            class="ui-listbox-item"
+                            style="display: inline-block; padding: 0px 6px 4px 6px; font-size: 13px; min-width: 180px"
+                        >
+                            <span>{{ node.label }}</span>
+                            <span
+                                *ngIf="node.data.description"
+                                class="pi pi-info-circle"
+                                style="padding: 0 0 0 5px"
+                                pTooltip="{{ node.data.description }}"
+                                tooltipPosition="top"
+                                tooltipZIndex="1000000"
+                            ></span>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+        <div [style.display]="!compactTreeVisible ? 'block' : 'none'" style="text-align: center">
+            <p-dataView
+                #dv
+                [value]="files"
+                emptyMessage="No items found"
+                [paginator]="files.length > itemsPerPage || total > itemsPerPage"
+                [rows]="itemsPerPage"
+                [loading]="isLoadingFiles || isRemovingFiles"
+                loadingIcon="pi pi-spinner ico-lg"
+                [lazy]="apiPagination"
+                [totalRecords]="total"
+                (onPage)="onLazyLoad($event)"
+                paginatorPosition="bottom"
+                [sortField]="fileSortField"
+                [sortOrder]="fileSortOrder"
+                [layout]="galleryLayout"
+                [styleClass]="'library-dataview-compact'"
+                filterBy="title"
+            >
+                <ng-template let-element pTemplate="gridItem">
+                    <div
+                        style="
+                            box-sizing: border-box;
+                            border: 1px solid white;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 5px;
+                            min-width: 60px;
+                            height: 55px;
+                            overflow: hidden;
+                            cursor: pointer;
+                        "
+                        class="ui-g-2 box-highlight"
+                        (mouseenter)="onShowPreview($event, element, opPreview)"
+                        (mouseleave)="onHidePreview($event, opPreview)"
+                        (click)="onFileSelect($event, element); onHidePreview($event, opPreview)"
+                        (contextmenu)="onFileContextMenu($event, element)"
+                        pDraggable="dd"
+                        (onDragStart)="ds.onDragStart($event, element, false, 'lib'); onHidePreview($event, opPreview)"
+                        (onDragEnd)="ds.onDragEnd($event)"
+                    >
+                        <img
+                            style="pointer-events: none; max-width: 75px; max-height: 55px"
+                            [src]="config.getAssetFullURL(element?.thumbnail ? element.thumbnail : element?.image)"
+                        />
+                    </div>
+                    <div *ngIf="element?.deleteEnabled" style="margin-left: -35px">
+                        <button
+                            pButton
+                            type="button"
+                            icon="pi pi-times"
+                            (click)="onFileRemove(element)"
+                            class="b-margin-sm ui-button-secondary transparent-bg no-outline"
+                        ></button>
+                    </div>
+                </ng-template>
+            </p-dataView>
+        </div>
+    </div>
+
+    <div *ngIf="!compactLayout" style="width: 900px">
+        <div class="p-grid p-nogutter t-margin-sm">
+            <div class="p-col-4">
+                <p-tree
+                    [value]="nodes"
+                    selectionMode="single"
+                    [selection]="selectedNode"
+                    (onNodeSelect)="onNodeSelect($event)"
+                    [style]="{ 'max-height': '405px', width: '100%', overflow: 'auto', padding: '0' }"
+                >
+                    <ng-template let-node pTemplate="default">
+                        <span>{{ node.label }}</span>
+                        <span
+                            *ngIf="node.data.description"
+                            class="pi pi-info-circle"
+                            style="padding: 0 0 0 5px"
+                            pTooltip="{{ node.data.description }}"
+                            tooltipPosition="top"
+                            tooltipZIndex="1000000"
+                        ></span>
+                    </ng-template>
+                </p-tree>
+            </div>
+            <div class="p-col-8">
+                <div *ngIf="!saveVisible">
+                    <div
+                        *ngIf="searchVisible"
+                        class="ui-inputgroup"
+                        style="width: 100%; height: 50px; align-items: flex-start; justify-content: center"
+                    >
+                        <input
+                            #searchInput
+                            type="search"
+                            pInputText
+                            placeholder="Search"
+                            (keydown)="onSearchKeyDown($event, searchInput.value)"
+                            style="width: 250px"
+                        />
+                        <button
+                            *ngIf="!subSearchVisible"
+                            pButton
+                            type="button"
+                            icon="pi pi-search"
+                            (click)="onSearch(searchInput.value)"
+                            class="no-outline"
+                        ></button>
+                        <button
+                            *ngIf="subSearchVisible"
+                            pButton
+                            type="button"
+                            label="Current"
+                            icon="pi pi-search"
+                            (click)="onSubSearch(searchInput.value)"
+                            class="no-outline"
+                            showDelay="600"
+                            pTooltip="Search in the current folder"
+                            tooltipPosition="top"
+                            tooltipZIndex="1000000"
+                        ></button>
+                        <button
+                            *ngIf="subSearchVisible"
+                            pButton
+                            type="button"
+                            label="All"
+                            icon="pi pi-search"
+                            (click)="onSearch(searchInput.value)"
+                            class="no-outline"
+                            style="margin-left: 1px"
+                            showDelay="600"
+                            pTooltip="Search in all the folders"
+                            tooltipPosition="top"
+                            tooltipZIndex="1000000"
+                        ></button>
+                    </div>
+
+                    <p-dataView
+                        #dv
+                        [value]="files"
+                        emptyMessage="No items found"
+                        [paginator]="files.length > itemsPerPage || total > itemsPerPage"
+                        [rows]="itemsPerPage"
+                        [loading]="isLoadingFiles || isRemovingFiles"
+                        loadingIcon="pi pi-spinner ico-lg"
+                        [lazy]="apiPagination"
+                        [totalRecords]="total"
+                        (onPage)="onLazyLoad($event)"
+                        paginatorPosition="bottom"
+                        [sortField]="fileSortField"
+                        [sortOrder]="fileSortOrder"
+                        [layout]="galleryLayout"
+                        [styleClass]="'library-dataview'"
+                        filterBy="title"
+                    >
+                        <ng-template let-element pTemplate="listItem">
+                            <!-- not finished -->
+                            <img [src]="config.getAssetFullURL(element.thumbnail ? element.thumbnail : element.image)" />
+                        </ng-template>
+
+                        <ng-template let-element pTemplate="gridItem">
+                            <div
+                                style="
+                                    box-sizing: border-box;
+                                    border: 1px solid white;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    padding: 5px;
+                                    min-width: 60px;
+                                    height: 101px;
+                                    overflow: hidden;
+                                    cursor: pointer;
+                                "
+                                class="ui-g-3 box-highlight"
+                                (mouseenter)="onShowPreview($event, element, opPreview)"
+                                (mouseleave)="onHidePreview($event, opPreview)"
+                                (click)="onFileSelect($event, element); onHidePreview($event, opPreview)"
+                                (contextmenu)="onFileContextMenu($event, element)"
+                                pDraggable="dd"
+                                (onDragStart)="ds.onDragStart($event, element, false, 'lib'); onHidePreview($event, opPreview)"
+                                (onDragEnd)="ds.onDragEnd($event)"
+                            >
+                                <img
+                                    style="pointer-events: none; max-width: 120px; max-height: 75px"
+                                    [src]="config.getAssetFullURL(element?.thumbnail ? element.thumbnail : element?.image)"
+                                />
+                            </div>
+                            <div *ngIf="element?.deleteEnabled" style="margin-left: -35px">
+                                <button
+                                    pButton
+                                    type="button"
+                                    icon="pi pi-times"
+                                    (click)="onFileRemove(element)"
+                                    class="b-margin-sm ui-button-secondary transparent-bg no-outline"
+                                ></button>
+                            </div>
+                        </ng-template>
+                    </p-dataView>
+                </div>
+                <div *ngIf="saveVisible && fileToSave">
+                    <div style="width: 100%; text-align: center; margin-bottom: 10px">
+                        <img [src]="fileToSave?.image" />
+                    </div>
+                    <div class="ui-inputgroup" style="width: 100%; height: 50px; align-items: flex-start; justify-content: center">
+                        <input
+                            #saveInput
+                            type="text"
+                            pInputText
+                            placeholder="Name"
+                            (keydown)="onSaveKeyDown($event, saveInput.value)"
+                            style="width: 250px"
+                        />
+                        <button
+                            pButton
+                            label="Save"
+                            type="button"
+                            icon="pi pi-save"
+                            (click)="onFileSave(saveInput.value)"
+                            [disabled]="isSavingFiles || isLoadingFiles"
+                            class="no-outline"
+                        ></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-grid p-nogutter t-margin">
+            <div class="p-col-fixed" style="width: 175px">
+                <div *ngIf="uploadVisible" style="display: inline-block">
+                    <button
+                        pButton
+                        type="button"
+                        label="Upload an image"
+                        icon="pi pi-upload"
+                        (click)="opUploader.toggle($event)"
+                        class="b-margin-sm"
+                    ></button>
+                </div>
+            </div>
+            <div class="p-col" style="max-width: 725px">
+                <div *ngIf="visible && recentFiles.length > 0" class="l-margin" style="overflow: hidden">
+                    Recent:
+                    <span
+                        *ngIf="recentFilesDescription"
+                        class="pi pi-info-circle"
+                        style="padding: 0 0 0 5px"
+                        pTooltip="{{ recentFilesDescription }}"
+                        tooltipPosition="top"
+                    ></span>
+                    <p-carousel
+                        [value]="recentFiles"
+                        [numVisible]="8"
+                        [numScroll]="6"
+                        [circular]="false"
+                        [contentClass]="recentFiles.length > 8 ? 'library-carousel-compact' : 'library-carousel-empty'"
+                    >
+                        <ng-template let-element pTemplate="item">
+                            <div class="p-grid p-nogutter">
+                                <div class="p-col-12" style="overflow: hidden">
+                                    <div
+                                        style="
+                                            box-sizing: border-box;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            padding: 5px;
+                                            min-width: 60px;
+                                            height: 75px;
+                                            overflow: hidden;
+                                            cursor: pointer;
+                                        "
+                                        class="box-highlight"
+                                        (mouseenter)="onShowPreview($event, element, opPreview)"
+                                        (mouseleave)="onHidePreview($event, opPreview)"
+                                        (click)="onFileSelect($event, element); onHidePreview($event, opPreview)"
+                                    >
+                                        <img
+                                            style="max-width: 75px; max-height: 75px"
+                                            [src]="config.getAssetFullURL(element.thumbnail ? element.thumbnail : element.image)"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p-footer *ngIf="compactLayout" class="compact-footer" style="border-width: 0">
+        <div *ngIf="uploadVisible" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+            <div class="h-delimiter" style="width: 100%"></div>
+            <button
+                pButton
+                type="button"
+                label="Upload an image"
+                icon="pi pi-upload"
+                (click)="opUploader.toggle($event)"
+                style="margin: 15px 10px 15px 10px"
+            ></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-overlayPanel #opUploader [showCloseIcon]="true">
+    <p-fileUpload
+        name="files[]"
+        [url]="config.uploadURL + '?fileNumber=' + uploadID"
+        (onUpload)="onFileUpload($event); opUploader.hide(); onHidePreview($event, opPreview)"
+        (onError)="onFileUploadError($event)"
+        chooseLabel="Choose File"
+        auto="auto"
+        accept="image/*"
+        maxFileSize="10000000"
+    >
+        <ng-template pTemplate="content">
+            <div style="width: 400px; height: 329px; line-height: 329px" class="h-centered">Drop an image here<br /></div>
+        </ng-template>
+    </p-fileUpload>
+</p-overlayPanel>
+
+<p-overlayPanel #opPreview showTransitionOptions="0ms" hideTransitionOptions="0ms">
+    <div *ngIf="hoverImage" class="noselect">
+        <figure class="figure" *ngIf="hoverImage.image">
+            <img [src]="config.getAssetFullURL(hoverImage?.image)" alt="Preview" />
+            <figcaption class="figcaption">{{ hoverImage?.title }}</figcaption>
+        </figure>
+        <div class="figcaption" *ngIf="!hoverImage.image" style="text-align: center" [style.minWidth.px]="compactLayout ? 67 : 122">
+            {{ hoverImage?.title }}
+        </div>
+    </div>
+</p-overlayPanel>

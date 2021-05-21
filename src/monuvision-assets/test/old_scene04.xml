@@ -1,0 +1,174 @@
+<data>
+	<design>
+		<isFront>true</isFront>
+		<oppositeSideID>-1</oppositeSideID>
+		<area>
+			<piece type="GROUP">
+				<x>0</x>
+				<y>182.6</y>
+				<sX>1</sX>
+				<sY>1</sY>
+				<r>0</r>
+				<ID>19316468</ID>
+				<piece type="PRINTED TEXT">
+					<string>ROBIN "JEAN" TAYLOR</string>
+					<font>0,1022</font>
+					<size>0,1</size>
+					<lineSpacing>1</lineSpacing>
+					<spacing>0.0625</spacing>
+					<bold>false</bold>
+					<polish>false</polish>
+					<frost>false</frost>
+					<outline>false</outline>
+					<justify>1</justify>
+					<shapeEnabled>false</shapeEnabled>
+					<shapeAdjust>0.75</shapeAdjust>
+					<sinkage>black</sinkage>
+					<x>33.75</x>
+					<y>53.099999999999994</y>
+					<sX>1</sX>
+					<sY>0.9999999999999999</sY>
+					<r>0</r>
+					<ID>23897191</ID>
+				</piece>
+				<piece type="PRINTED TEXT">
+					<string>January ~^#9, 1964</string>
+					<font>0,1022</font>
+					<size>0,0.75</size>
+					<lineSpacing>0.25,0.25</lineSpacing>
+					<spacing>0.0625</spacing>
+					<bold>false</bold>
+					<polish>false</polish>
+					<frost>false</frost>
+					<outline>false</outline>
+					<justify>1</justify>
+					<shapeEnabled>false</shapeEnabled>
+					<shapeAdjust>0.75</shapeAdjust>
+					<sinkage>black</sinkage>
+					<x>-40.05</x>
+					<y>87.55</y>
+					<sX>1</sX>
+					<sY>1</sY>
+					<r>0</r>
+					<ID>35688636</ID>
+				</piece>
+				<piece type="PRINTED TEXT">
+					<string>November~^#9, 2002</string>
+					<font>0,1022</font>
+					<size>0,0.75</size>
+					<lineSpacing>0.25,0.25</lineSpacing>
+					<spacing>0.0625</spacing>
+					<bold>false</bold>
+					<polish>false</polish>
+					<frost>false</frost>
+					<outline>false</outline>
+					<justify>1</justify>
+					<shapeEnabled>false</shapeEnabled>
+					<shapeAdjust>0.75</shapeAdjust>
+					<sinkage>black</sinkage>
+					<x>106.4</x>
+					<y>86.85</y>
+					<sX>1</sX>
+					<sY>1</sY>
+					<r>0</r>
+					<ID>16416572</ID>
+				</piece>
+				<piece type="PRINTED TEXT">
+					<string>" NO MATTER WHAT YOU'RE GOING THROUGH~^#FOR THE BATTLE IS NOT YOURS, IT'S THE LORDS"</string>
+					<font>0,1014</font>
+					<size>0,0.5</size>
+					<lineSpacing>0.5,0.5</lineSpacing>
+					<spacing>0.0625</spacing>
+					<bold>false</bold>
+					<polish>false</polish>
+					<frost>false</frost>
+					<outline>false</outline>
+					<justify>1</justify>
+					<shapeEnabled>false</shapeEnabled>
+					<shapeAdjust>0.75</shapeAdjust>
+					<sinkage>black</sinkage>
+					<x>36.55</x>
+					<y>129.14999999999998</y>
+					<sX>1</sX>
+					<sY>0.9999999999999999</sY>
+					<r>0</r>
+					<ID>11327951</ID>
+				</piece>
+				<piece type="COMPONENT">
+					<compID>435056</compID>
+					<name>Kh24037</name>
+					<imageFile>/sites/default/files/component/2657/kh24037.jpg</imageFile>
+					<inverted>false</inverted>
+					<drawSimple>false</drawSimple>
+					<etching>not an etching</etching>
+					<frostingVisible>true</frostingVisible>
+					<sinkage>black</sinkage>
+					<flipped>false</flipped>
+					<minWidth>0.6666666666666666</minWidth>
+					<minHeight>0.6666666666666666</minHeight>
+					<x>-126.5</x>
+					<y>132.5</y>
+					<sX>0.0655940594059406</sX>
+					<sY>0.06604584324528623</sY>
+					<r>0</r>
+					<ID>57059721</ID>
+				</piece>
+				<piece>null</piece>
+				<piece>5</piece>
+				<piece></piece>
+				<piece type="COMPONENT">
+					<compID>445433</compID>
+					<name>Kh24149p</name>
+					<imageFile>/sites/default/files/component/2657/kh24149p.jpg</imageFile>
+					<inverted>false</inverted>
+					<drawSimple>false</drawSimple>
+					<etching>not an etching</etching>
+					<frostingVisible>true</frostingVisible>
+					<sinkage>black</sinkage>
+					<flipped>false</flipped>
+					<minWidth>0.6666666666666666</minWidth>
+					<minHeight>0.6666666666666666</minHeight>
+					<x>-5</x>
+					<y>92.94999999999999</y>
+					<sX>0.33425</sX>
+					<sY>0.39632002654843396</sY>
+					<r>0</r>
+					<ID>55764482</ID>
+				</piece>
+				<piece type="COMPONENT">
+					<compID>873</compID>
+					<name>Ceramic 1</name>
+					<imageFile>/sites/default/files/component/10/Ceramic Photo 1, wwmv.gif</imageFile>
+					<inverted>false</inverted>
+					<drawSimple>true</drawSimple>
+					<etching>not an etching</etching>
+					<frostingVisible>false</frostingVisible>
+					<sinkage>black</sinkage>
+					<flipped>false</flipped>
+					<minWidth>0.6666666666666666</minWidth>
+					<minHeight>0.6666666666666666</minHeight>
+					<x>26.75</x>
+					<y>88.14999999999999</y>
+					<sX>0.12215743440233236</sX>
+					<sY>0.08991111111111111</sY>
+					<r>0</r>
+					<ID>92477326</ID>
+				</piece>
+			</piece>
+		</area>
+	</design>
+	<monument>
+		<tablet n="0">
+			<shape>18</shape>
+			<width>360</width>
+			<height>180</height>
+			<depth>120</depth>
+			<polish>7</polish>
+			<color>1</color>
+			<hidden>false</hidden>
+			<posX>0</posX>
+		</tablet>
+	</monument>
+	<instructions/>
+	<background>0</background>
+</data>
